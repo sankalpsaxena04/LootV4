@@ -10,23 +10,48 @@
         android:id="@+id/imageFilterView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="center"
-        android:src="@drawable/bg_1"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/sgbg"/>
 
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/loot_title"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="51dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="51dp"
-        android:src="@drawable/logo_2"
+        android:fontFamily="@font/sgtwo"
+        android:gravity="center"
+        android:text="Loot"
+        android:textColor="@color/white"
+        android:textSize="85dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.71" />
+
+
+    <TextView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="51dp"
+        android:fontFamily="@font/sgon"
+        android:gravity="center"
+        android:text="Let the loot begin"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loot_title"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.71" />
 
@@ -46,7 +71,7 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/loot_title"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.71">
 
@@ -100,7 +125,7 @@
             android:background="@drawable/card_background_yellow"
             android:fontFamily="@font/avenir_next_lt_pro_bold"
             android:text="Login"
-            android:textColor="@color/darkGrey" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/sendmail"

@@ -43,6 +43,7 @@ public class Duel_Alert_Transparent_Activity extends AppCompatActivity {
         Intent intent=getIntent();
         fcmService=APIUtils.getAPIService();
         String request_type=intent.getStringExtra("request_type");
+
         if(request_type.equals("duel_request")) {
             String from_user = intent.getStringExtra("user");
             String stake = intent.getStringExtra("stake");

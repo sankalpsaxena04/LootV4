@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/space_transparent"
+    android:background="@drawable/black_gradient_bg"
     tools:context="com.hackncs.zealicon.loot.Current_missions">
 
 
@@ -11,7 +11,10 @@
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/gaitonde"
+        android:paddingTop="50dp"
+        android:scaleX="1.2"
+        android:scaleY= "1.2"
+        android:src="@drawable/sg_charone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.52"
@@ -23,10 +26,9 @@
         android:id="@+id/mission_desc"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="46dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,17 +40,19 @@
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
             android:fadeScrollbars="false"
-            android:scrollbarThumbVertical="@drawable/white_rectangle"
-            android:layout_marginBottom="4dp">
+            android:background="@drawable/white_background70"
+            android:scrollbarThumbVertical="@drawable/white_rectangle">
 
             <TextView
                 android:id="@+id/dan_msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/avenir_next_lt_pro_bold"
-                android:text=""
+                android:fontFamily="@font/popinsemibold"
+            android:text=" Your mission will come here..Your mission will come "
                 android:textColor="@color/white"
+                android:padding="10dp"
                 android:textSize="18sp" />
         </ScrollView>
     </LinearLayout>

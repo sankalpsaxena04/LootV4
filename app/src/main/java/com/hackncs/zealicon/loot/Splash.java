@@ -13,9 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -51,7 +54,9 @@ public class Splash extends Fragment {
     FirebaseUser fbuser;
     User user;
     ProgressBar loader;
+    Animation fade , blinkinf, popup;
     ArrayList<Mission> missionsList = new ArrayList<>();
+    TextView title;
     boolean isConnected, logged_in, synced_user, synced_missions, isVerified;
 
     public Splash() {
@@ -88,9 +93,17 @@ public class Splash extends Fragment {
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
         missions = database.getReference("Current_missions");
-        loader=(ProgressBar)getView().findViewById(R.id.loader);
+        loader=(ProgressBar)getView().findViewById(R.id.loadersplash);
+        title = getView().findViewById(R.id.loot_title);
 
+         fade = AnimationUtils.loadAnimation(getContext(), R.anim.fadeanim);
+         blinkinf = AnimationUtils.loadAnimation(getContext(), R.anim.blink_infinite);
+         popup = AnimationUtils.loadAnimation(getContext(), R.anim.popup);
         loader.setMax(5000);
+        title.setAnimation(popup);
+        loader.setAnimation(blinkinf);
+
+        //blink.start();
         new CountDownTimer(5100, 1) {
             @Override
             public void onTick(long l) {
@@ -100,7 +113,8 @@ public class Splash extends Fragment {
 
             @Override
             public void onFinish() {
-
+                loader.clearAnimation();
+                loader.setVisibility(View.GONE);
             }
         }.start();
 
@@ -252,7 +266,8 @@ public class Splash extends Fragment {
     }
 
     private void changeView() {
-        ProgressBar loader = getView().findViewById(R.id.loader);
+
+        ProgressBar loader = (ProgressBar) getView().findViewById(R.id.loadersplash);
         RelativeLayout layout = getView().findViewById(R.id.rel_layout);
         loader.setVisibility(View.GONE);
         layout.setVisibility(View.VISIBLE);

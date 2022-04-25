@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardCornerRadius="10dp"
+    android:layout_marginTop="5dp"
     card_view:cardElevation="5dp"
-    card_view:cardBackgroundColor="@color/space_transparent"
-    card_view:cardUseCompatPadding="true">
+    card_view:cardBackgroundColor="@color/cardview_dark_background"
+   >
 
     <LinearLayout
-        android:background="@drawable/card_background_white"
         android:layout_width="match_parent"
         android:layout_height="74dp"
         android:paddingTop="10dp"
@@ -23,7 +23,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/avatar_1"
+            android:src="@drawable/card_background_yellow"
             android:scaleType="fitXY"
             android:layout_marginLeft="22dp"
             android:layout_marginStart="22dp"
@@ -45,8 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Misaki"
-                android:fontFamily="@font/avenir_next_lt_pro_bold"
-                android:textColor="@color/actionBarText"
+                android:gravity="center"
+                android:fontFamily="@font/popbold"
+                android:textColor="@color/white30"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -60,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:text="$"
                     android:fontFamily="@font/bahnschrift_reg"
-                    android:textColor="@color/actionBarText"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp" />
 
                 <TextView
@@ -69,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:text="1000"
                     android:fontFamily="@font/bahnschrift_reg"
-                    android:textColor="@color/actionBarText"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp" />
             </LinearLayout>
 

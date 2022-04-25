@@ -30,33 +30,33 @@ public class Help extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Button shobhitContact=getView().findViewById(R.id.shobhitContact);
-        Button shubhamContact=getView().findViewById(R.id.shubhamContact);
+        Button anuragContact=getView().findViewById(R.id.anuragContact);
+        Button alokContact=getView().findViewById(R.id.alokContact);
         final TextView facebook=getView().findViewById(R.id.textView6);
-        final TextView shobhit=getView().findViewById(R.id.textView2);
-        final TextView shubham=getView().findViewById(R.id.textView4);
-        shobhitContact.setOnClickListener(new View.OnClickListener() {
+        final TextView anurag=getView().findViewById(R.id.textView2);
+        final TextView alok=getView().findViewById(R.id.textView4);
+        anuragContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialPhoneNumber("917291082627");
+                dialPhoneNumber("9839545115");
             }
         });
-        shubhamContact.setOnClickListener(new View.OnClickListener() {
+        alokContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialPhoneNumber("917785037144");
+                dialPhoneNumber("8887358051");
             }
         });
-        shobhit.setOnClickListener(new View.OnClickListener() {
+        anurag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialPhoneNumber("917291082627");
+                dialPhoneNumber("9839545115");
             }
         });
-        shubham.setOnClickListener(new View.OnClickListener() {
+        alok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialPhoneNumber("917785037144");
+                dialPhoneNumber("8887358051");
             }
         });
         facebook.setOnClickListener(new View.OnClickListener() {

@@ -6,27 +6,98 @@
     android:background="@color/black"
     tools:context="com.hackncs.zealicon.loot.Splash">
 
+
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageFilterView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="center"
-        android:src="@drawable/bg_1"/>
+        android:src="@drawable/squidgames_pos"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="324dp" />
 
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/loot_title"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="51dp"
-        android:src="@drawable/logo_2"
+        android:fontFamily="@font/sgtwo"
+        android:gravity="center"
+        android:text="Loot"
+        android:textColor="@color/white"
+        android:textSize="85dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.71" />
+
+    <!--    <Button-->
+<!--        android:id="@+id/getstarted_btn"-->
+<!--        android:layout_width="190dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:background="@drawable/card_background_black"-->
+<!--        android:fontFamily="@font/pop_medium"-->
+<!--        android:text="Get Started"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textAlignment="center"-->
+<!--        android:paddingTop="5dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/loader" />-->
+
+    <ImageView
+        android:id="@+id/ncs_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="51dp"
+        android:fontFamily="@font/sgtwo"
+
+        android:scaleX="1"
+        android:scaleY="1"
+        android:src="@drawable/ncslogo"
+        android:textColor="@color/white"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageFilterView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.62"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.71" />
+
+    <TextView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="51dp"
+        android:fontFamily="@font/popbold"
+        android:gravity="center"
+        android:text="Welcome to the Loot"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loot_title"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.71" />
 
@@ -36,16 +107,15 @@
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="53dp"
-        android:layout_marginTop="40dp"
         android:layout_marginEnd="53dp"
-        android:layout_marginBottom="78dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/imageFilterView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/loadersplash"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.72">
 
@@ -76,41 +146,42 @@
     </RelativeLayout>
 
     <ProgressBar
-        android:id="@+id/loader"
+        android:id="@+id/loadersplash"
         style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="20dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="53dp"
-        android:layout_marginTop="40dp"
         android:layout_marginEnd="53dp"
-        android:layout_marginBottom="78dp"
         android:max="100"
         android:progress="50"
         android:progressDrawable="@drawable/vertical_progress"
         android:visibility="visible"
-        app:layout_constraintWidth_default="percent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageFilterView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.048"
-        app:layout_constraintWidth_percent="0.71"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.27"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.71" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/symbol_1"
-        android:visibility="visible"
+        android:layout_width="300dp"
+        android:layout_height="249dp"
+        android:layout_marginBottom="184dp"
+        android:src="@drawable/squidgames_pos"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="1" />
 

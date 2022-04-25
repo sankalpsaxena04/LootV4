@@ -3,7 +3,10 @@
     <item android:id="@android:id/background">
         <shape>
             <corners android:radius="15dp"/>
-            <solid android:color="#30ffffff"/>
+            <solid android:color="#5B3A3A3A"/>
+            <stroke
+                android:color="@color/colorPrimary"
+                android:width="2dp"/>
         </shape>
     </item>
 </layer-list>

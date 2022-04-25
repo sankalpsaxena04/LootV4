@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="center"
-        android:src="@drawable/bg_1"/>
+        android:src="@drawable/squidgames_pos"
+        tools:layout_editor_absoluteX="17dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="52dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="56dp"
         android:background="@drawable/white_background70"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,11 +41,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/avenir_next_lt_pro_demi"
+            android:fontFamily="@font/popinmedium"
             android:text="@string/intro2"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:lineSpacingExtra="4dp"/>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

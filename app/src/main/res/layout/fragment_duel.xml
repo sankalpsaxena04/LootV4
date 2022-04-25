@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/space_transparent"
+    android:background="@drawable/black_gradient_bg"
     tools:context="com.hackncs.zealicon.loot.Current_missions">
 
 
@@ -14,7 +14,7 @@
         android:layout_marginStart="46dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="46dp"
-        android:fontFamily="@font/avenir_next_lt_pro_bold"
+        android:fontFamily="@font/popbold"
         android:text="Duel Mode"
         android:textColor="@color/white"
         android:textSize="35sp"
@@ -45,7 +45,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/avenir_next_lt_pro_bold"
+                android:fontFamily="@font/popbold"
                 android:text="WON"
                 android:textColor="@color/darkGrey"
                 android:textSize="18sp"
@@ -73,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/avenir_next_lt_pro_bold"
+                android:fontFamily="@font/popbold"
                 android:text="LOST"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -90,7 +90,42 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
+
+
     </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/white_background70"
+
+        android:fadeScrollbars="false"
+        android:padding="15dp"
+        android:scrollbarThumbVertical="@drawable/white_rectangle"
+        android:verticalScrollbarPosition="right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.38"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.75">
+
+        <TextView
+            android:id="@+id/story"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/popinmedium"
+            android:text="Stake your coins and challenge other online players on a 1 on 1 game to climb the leaderboard!"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </ScrollView>
 
 
     <ImageView
@@ -98,29 +133,32 @@
         android:layout_width="236dp"
         android:layout_height="0dp"
         android:layout_marginStart="153dp"
-        android:src="@drawable/gaitonde"
+        android:layout_marginBottom="16dp"
+        android:paddingTop="80dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:src="@drawable/sgchar_two"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.43"
+        app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.575" />
-
 
     <TextView
         android:id="@+id/dan_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="152dp"
-        android:fontFamily="@font/avenir_next_lt_pro_bold"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="200dp"
+        android:fontFamily="@font/popinmedium"
         android:text="Ready To Loot?"
         android:textColor="@color/colorPrimary"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <Button
         android:id="@+id/loot"
@@ -131,7 +169,8 @@
         android:layout_marginTop="20dp"
         android:text="LOOT !"
         android:textSize="20sp"
-        android:fontFamily="@font/avenir_next_lt_pro_bold"
+        android:fontFamily="@font/popbold"
+
         android:background="@drawable/card_background_yellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

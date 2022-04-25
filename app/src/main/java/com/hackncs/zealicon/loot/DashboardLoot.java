@@ -65,10 +65,10 @@ public class DashboardLoot extends AppCompatActivity {
         SharedPreferences  sharedPreferences = getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);
         int score = sharedPreferences.getInt("com.hackncs.score", 0);
         String username= sharedPreferences.getString("com.hackncs.username", null);
-        int avatarID = sharedPreferences.getInt("com.hackncs.avatarID", R.drawable.avatar_1);
-        action_bar_useravatar.setImageResource(avatarID);
-        action_bar_username.setText(username);
-        action_bar_usercoins.setText(score+"");
+//        int avatarID = sharedPreferences.getInt("com.hackncs.avatarID", R.drawable.avatar_1);
+//        action_bar_useravatar.setImageResource(avatarID);
+//        action_bar_username.setText(username);
+//        action_bar_usercoins.setText(score+"");
 
 
         mediaPlayer = MediaPlayer.create(this, R.raw.backgroundloop);
@@ -93,6 +93,7 @@ public class DashboardLoot extends AppCompatActivity {
                         loadFragment(new Missions(),"missions");
                         break;
                     case R.id.navigation_leaderboard:
+
 
                         loadFragment(new LeaderBoard(),"leaderboard");
                         break;

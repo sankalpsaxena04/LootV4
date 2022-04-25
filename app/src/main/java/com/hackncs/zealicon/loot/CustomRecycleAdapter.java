@@ -211,6 +211,12 @@ public class CustomRecycleAdapter extends RecyclerView.Adapter<CustomRecycleAdap
             public void onResponse(Call<JSONObject> call, retrofit2.Response<JSONObject> response) {
 
                 Log.i("Response Code",response.code()+"");
+                //Log.i("Response Code",response.code()+"");
+                Log.i("Response error body",response.errorBody().toString()+"");
+              //  Log.i("Response body",response.body().toString()+"");
+              //  Log.i("Response raw",response.raw().toString()+"");
+
+
                 if(response.isSuccessful())
                 {
                     JSONObject object=response.body();

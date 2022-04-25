@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="center"
-        android:src="@drawable/bg_1"/>
+        android:alpha="0.6"
+        android:src="@drawable/squidgames_pos"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="52dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="56dp"
         android:background="@drawable/white_background70"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,37 +29,55 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/map"
-            android:layout_width="125dp"
-            android:layout_height="151dp"
+            android:layout_width="94dp"
+            android:layout_height="70dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/map_2"
+            android:elevation="10dp"
+            android:src="@drawable/navi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.366"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/mapp"
+            android:layout_width="150dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/map"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="304dp"
+            android:layout_height="348dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.517"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/map">
+            app:layout_constraintTop_toBottomOf="@id/map"
+            app:layout_constraintVertical_bias="0.664">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/avenir_next_lt_pro_demi"
-            android:text="@string/intro3"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:lineSpacingExtra="4dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/popinmedium"
+                android:gravity="center"
+                android:lineSpacingExtra="6dp"
+                android:padding="15dp"
+                android:text="@string/intro3"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -69,15 +71,18 @@ public class Register extends Fragment implements View.OnClickListener{
         super.onActivityCreated(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        Button register = getView().findViewById(R.id.submit);
+        final Button register = getView().findViewById(R.id.submit);
 
         dialog.setTitle("Please Wait");
         dialog.setCancelable(false);
         dialog.setMessage("Signing in...");
-
+        final Animation blinkAnim = AnimationUtils.loadAnimation(getContext(), R.anim.blink) ;
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                register.setAnimation(blinkAnim);
+
                 if (!validation()) {
                     Toast.makeText(getActivity(), "Please fill in all the field", Toast.LENGTH_SHORT).show();
                 } else {
@@ -89,6 +94,7 @@ public class Register extends Fragment implements View.OnClickListener{
                                     if (task.isSuccessful()) {
                                         dialog.dismiss();
                                         firebaseUser = mAuth.getCurrentUser();
+                                        assert firebaseUser != null;
                                         firebaseUser.sendEmailVerification().addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
@@ -110,7 +116,7 @@ public class Register extends Fragment implements View.OnClickListener{
 
                                     } else {
                                         dialog.dismiss();
-                                        Toast.makeText(getContext(), "Registration failed." + task.getException().getMessage(),
+                                        Toast.makeText(getContext(), "Firebase : Registration failed." + task.getException().getMessage(),
                                                 Toast.LENGTH_SHORT).show();
 
                                     }
@@ -130,7 +136,7 @@ public class Register extends Fragment implements View.OnClickListener{
                     public void onResponse(String response) {
                         Log.d("volley request", "response");
                         syncSharedPrefs();
-                        Toast.makeText(getContext(), "You're registered successfully!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Server : You're registered successfully!", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getContext(), WelcomeSlider.class);
                         startActivity(i);
                     }
@@ -140,7 +146,7 @@ public class Register extends Fragment implements View.OnClickListener{
                     public void onErrorResponse(VolleyError error) {
                         firebaseUser.delete();
                         Log.d("volley request", "error");
-                        Toast.makeText(getContext(), "Error Occurred!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Server: Error Occurred!", Toast.LENGTH_SHORT).show();
                     }
                 }) {
             @Override
@@ -219,6 +225,8 @@ public class Register extends Fragment implements View.OnClickListener{
     @Override
     public void onStart() {
         super.onStart();
+        
+        
     }
 
     private User getUser() {
@@ -271,11 +279,11 @@ public class Register extends Fragment implements View.OnClickListener{
 
                 if(task.isSuccessful())
                 {
-                    Log.i("Added Succesfully","");
+                    Log.i("F Added Succesfully","");
                 }
                 else
                 {
-                    Log.i("Error",task.getException().getMessage());
+                    Log.i("Firebase : Error",task.getException().getMessage());
                 }
             }
         });

@@ -49,6 +49,8 @@ public class Duel extends Fragment {
         Button loot=view.findViewById(R.id.loot);
         BottomNavigationView navigationView=getActivity().findViewById(R.id.bottom_nav);
         navigationView.getMenu().getItem(0).setChecked(true);
+
+
         loot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

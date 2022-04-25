@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item android:id="@android:id/background">
         <shape>
             <corners android:radius="180dp"/>
-            <solid android:color="#654E09" />
-            <stroke android:color="#654E09" android:width="0dp"/>
+            <solid android:color="#004A383C" />
+            <stroke android:color="#00DD2F54" android:width="0dp"/>
         </shape>
     </item>
 
@@ -16,7 +17,7 @@
                    >
                     <shape>
                         <corners android:radius="180dp"/>
-                        <solid android:color="#FEC009" />
+                        <solid android:color="@color/colorPrimary" />
                         <stroke android:color="@color/space_transparent" android:width="0dp"/>
                     </shape>
                 </clip>

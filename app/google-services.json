@@ -1,96 +1,37 @@
 {
   "project_info": {
-    "project_number": "755281348975",
-    "firebase_url": "https://loot-test-b6e21.firebaseio.com",
-    "project_id": "loot-test-b6e21",
-    "storage_bucket": "loot-test-b6e21.appspot.com"
+    "project_number": "275061203875",
+    "firebase_url": "https://loot-2022-6d8f6-default-rtdb.firebaseio.com",
+    "project_id": "loot-2022-6d8f6",
+    "storage_bucket": "loot-2022-6d8f6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:755281348975:android:bf074d82fd6a320d",
-        "android_client_info": {
-          "package_name": "com.example.dell.loot"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "755281348975-8nrak8q3p0l3b5mkshgnponr0bdjpk8v.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.dell.loot",
-            "certificate_hash": "04d799a8e6900fb914f5fe90f31583a8dba9ddcf"
-          }
-        },
-        {
-          "client_id": "755281348975-s76ur0rd2gisemrm5ve8jo62lt16c8m6.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDBf_qhgAyQcy7IgbNhe5QV2yV2q1275iY"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "755281348975-s76ur0rd2gisemrm5ve8jo62lt16c8m6.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:755281348975:android:135134922cfd2ce6",
+        "mobilesdk_app_id": "1:275061203875:android:017bd1f0b697272e32b016",
         "android_client_info": {
           "package_name": "com.hackncs.zealicon.loot"
         }
       },
       "oauth_client": [
         {
-          "client_id": "755281348975-auehd1jchduik91t336hpd9sbga7saih.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.hackncs.zealicon.loot",
-            "certificate_hash": "04d799a8e6900fb914f5fe90f31583a8dba9ddcf"
-          }
-        },
-        {
-          "client_id": "755281348975-s76ur0rd2gisemrm5ve8jo62lt16c8m6.apps.googleusercontent.com",
+          "client_id": "275061203875-ehogr1j1cahkv5ar7slbmfj244od9dtb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDBf_qhgAyQcy7IgbNhe5QV2yV2q1275iY"
+          "current_key": "AIzaSyDP4ZnxbEUPulTSLpWPFzhZ9YZWbz3TZGM"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "755281348975-s76ur0rd2gisemrm5ve8jo62lt16c8m6.apps.googleusercontent.com",
+              "client_id": "275061203875-ehogr1j1cahkv5ar7slbmfj244od9dtb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

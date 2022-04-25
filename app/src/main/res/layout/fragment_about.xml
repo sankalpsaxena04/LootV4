@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="center"
-        android:src="@drawable/bg_1" />
+        android:src="@drawable/squidgames_pos" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -34,11 +34,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/card_background_yellow"
-            android:fontFamily="@font/avenir_next_lt_pro_bold"
+            android:fontFamily="@font/popbold"
             android:gravity="center"
             android:text="About"
-            android:textColor="@color/headingColor"
+            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +58,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/avenir_next_lt_pro_demi"
+                android:fontFamily="@font/popinmedium"
                 android:text="@string/about"
                 android:textAlignment="center"
                 android:lineSpacingExtra="4dp"
