@@ -22,6 +22,7 @@
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/ic_baseline_subject_24.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/ic_baseline_verified_24.xml" value="0.1" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/rounded_button.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/tabselector.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/vertical_progress.xml" value="0.20277777777777778" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/white15_rectangle.xml" value="0.20277777777777778" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/white_background70.xml" value="0.20277777777777778" />
@@ -35,8 +36,8 @@
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/challenge_dialog.xml" value="0.25" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/duel_alert.xml" value="0.2" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_about.xml" value="0.2" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_current_mission.xml" value="0.16" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_duel.xml" value="0.18" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_current_mission.xml" value="0.22" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_duel.xml" value="0.2" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_grid_tap.xml" value="0.2" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_help.xml" value="0.22" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_how_to.xml" value="0.2" />

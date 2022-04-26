@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -21,6 +23,9 @@ import androidx.fragment.app.FragmentTransaction;
  * A simple {@link Fragment} subclass.
  */
 public class Duel extends Fragment {
+
+    Animation blinkinf;
+
 
 
     public Duel() {
@@ -38,7 +43,11 @@ public class Duel extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         View view=getView();
+        blinkinf = AnimationUtils.loadAnimation(getContext(),R.anim.blink_infinite);
+        TextView danmsg = view.findViewById(R.id.dan_msg);
+        danmsg.setAnimation(blinkinf);
         TextView won=view.findViewById(R.id.won);
         TextView lost=view.findViewById(R.id.lost);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);

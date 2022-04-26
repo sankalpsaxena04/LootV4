@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -63,7 +65,6 @@ public class Current_missions extends Fragment {
         answer = view.findViewById(R.id.answer);
         submit = view.findViewById(R.id.submit);
         drop = view.findViewById(R.id.drop_mission);
-
         Bundle bundle =this.getArguments();
         mission=new Mission();
         mission.setMissionID(bundle.getInt("misionID"));
@@ -89,6 +90,7 @@ public class Current_missions extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
+
         displayMission();
         drop.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -204,6 +204,7 @@ public class CustomRecycleAdapter extends RecyclerView.Adapter<CustomRecycleAdap
 
 
     public void sendFCM(final FCMData fcmData) {
+
         fcmService.sendFCM(fcmData).enqueue(new Callback<JSONObject>() {
 
 
@@ -212,7 +213,7 @@ public class CustomRecycleAdapter extends RecyclerView.Adapter<CustomRecycleAdap
 
                 Log.i("Response Code",response.code()+"");
                 //Log.i("Response Code",response.code()+"");
-                Log.i("Response error body",response.errorBody().toString()+"");
+          //      Log.i("Response error body",response.errorBody().toString()+"");
               //  Log.i("Response body",response.body().toString()+"");
               //  Log.i("Response raw",response.raw().toString()+"");
 

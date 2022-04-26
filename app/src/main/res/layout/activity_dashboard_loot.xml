@@ -96,8 +96,6 @@
         android:background="@color/colorPrimary"
         android:theme="@style/BottomNavTheme"
         app:itemIconSize="23dp"
-        app:itemIconTint="@color/item_selector"
-        app:itemTextColor="@color/item_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
