@@ -39,7 +39,7 @@ public class MiniGame extends AppCompatActivity {
         int avatarID = sharedPreferences.getInt("com.hackncs.avatarID", R.drawable.avatar_1);
         action_bar_useravatar.setImageResource(avatarID);
         action_bar_username.setText(username);
-        action_bar_usercoins.setText(score+"");
+        action_bar_usercoins.setText(score+" \uD83E\uDE99");
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         GridTap fragment = new GridTap();

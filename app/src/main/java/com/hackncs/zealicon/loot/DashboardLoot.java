@@ -45,17 +45,24 @@ public class DashboardLoot extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore db;
     MediaPlayer mediaPlayer;
-    TextView action_bar_usercoins;
+    TextView action_bar_usercoins, title_bar;
+    final static String t1 = "DUEL", t2 = "Missions", t3 = "Leaderboard";
+    Fragment fDuel , fMission , fLeaderboard;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_loot);
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar2);
 
-
+        title_bar = findViewById(R.id.title_board);
         db= FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         setSupportActionBar(toolbar);
+        fDuel = new Duel();
+        fMission = new Missions();
+        fLeaderboard = new LeaderBoard();
+
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         TextView action_bar_username=findViewById(R.id.user_name);
@@ -71,7 +78,7 @@ public class DashboardLoot extends AppCompatActivity {
 //        action_bar_usercoins.setText(score+"");
 
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.backgroundloop);
+        mediaPlayer = MediaPlayer.create(this, R.raw.bgmusicsg);
         mediaPlayer.setLooping(true);
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.start();
@@ -86,16 +93,18 @@ public class DashboardLoot extends AppCompatActivity {
                 {
                     case R.id.navigation_duel:
 
-                        loadFragment(new Duel(),"duel");
+                        loadFragment(fDuel,"duel");
+                        title_bar.setText(t1);
+
 //
                         break;
                     case R.id.navigation_current_mission:
-                        loadFragment(new Missions(),"missions");
+                        loadFragment(fMission,"missions");
+                        title_bar.setText(t2);
                         break;
                     case R.id.navigation_leaderboard:
-
-
-                        loadFragment(new LeaderBoard(),"leaderboard");
+                        loadFragment(fLeaderboard,"leaderboard");
+                        title_bar.setText(t3);
                         break;
                 }
                 return true;
@@ -113,12 +122,13 @@ public class DashboardLoot extends AppCompatActivity {
 //            Log.i("Resume","Resume1"+mediaPlayer.isPlaying());
             SharedPreferences sharedPreferences = getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);
             int score = sharedPreferences.getInt("com.hackncs.score", 0);
-            action_bar_usercoins.setText(score + "");
+            action_bar_usercoins.setText(" "+score+" \uD83E\uDE99");
             userOnlineUpdate(mAuth.getCurrentUser().getUid(),false);
             updateFirebase(mAuth.getCurrentUser(), true);
             bottomNavigationView.getMenu().getItem(1).setChecked(true);
             Fragment fragment = new Missions();
             loadFragment(fragment, "missions");
+
         }
         else{
             Toast.makeText(this,"Please verify your email to continue",Toast.LENGTH_LONG).show();

@@ -47,10 +47,11 @@ public class CustomRecycleAdapter extends RecyclerView.Adapter<CustomRecycleAdap
     Activity activity;
     String fcm = "";
     APIService fcmService;
+    public int rank = 0;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, coins;
-        public ImageView avatar;
+        public TextView name, coins, rank;
+        public ImageView avatar, medal;
         public CardView cardView;
 
         public MyViewHolder(View view) {
@@ -58,7 +59,9 @@ public class CustomRecycleAdapter extends RecyclerView.Adapter<CustomRecycleAdap
             name = (TextView) view.findViewById(R.id.user_name);
             coins = (TextView) view.findViewById(R.id.user_coins);
             avatar = (ImageView) view.findViewById(R.id.avatar);
+            rank = (TextView) view.findViewById(R.id.rank);
             cardView=view.findViewById(R.id.card_view);
+            medal = (ImageView) view.findViewById(R.id.medal);
         }
     }
 
@@ -82,10 +85,24 @@ public class CustomRecycleAdapter extends RecyclerView.Adapter<CustomRecycleAdap
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final RequestQueue requestQueue = Volley.newRequestQueue(mActivity);
         final User user = users.get(position);
-//        Log.i("username",users.get(position).getUsername());
+
+
+
+        rank++;
+
+        if (rank==1) {
+            // leader.setVisibility(View.VISIBLE);
+            holder.medal.setVisibility(View.VISIBLE);
+        }else{
+            holder.medal.setVisibility(View.GONE);
+        }
+//      Log.i("username",users.get(position).getUsername());
         holder.name.setText(user.getUsername());
         holder.coins.setText(""+user.getScore());
         holder.avatar.setImageResource(user.getAvatarID());
+        holder.rank.setText(""+rank);
+
+
         if(key.equalsIgnoreCase("online_users"))
         {
             holder.cardView.setOnClickListener(new View.OnClickListener() {

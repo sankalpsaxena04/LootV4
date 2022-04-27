@@ -36,9 +36,9 @@
 
 
     <!-- dots active colors -->
-    <color name="dot_light_screen1">#FEC009</color>
-    <color name="dot_light_screen2">#FEC009</color>
-    <color name="dot_light_screen3">#FEC009</color>
+    <color name="dot_light_screen1">#DD2F54</color>
+    <color name="dot_light_screen2">#DD2F54</color>
+    <color name="dot_light_screen3">#DD2F54</color>
 
 
     <array name="array_dot_active">
@@ -52,7 +52,7 @@
         <item>@color/dot_dark_screen2</item>
         <item>@color/dot_dark_screen3</item>
     </array>
-    <color name="yellow500">#FFEB3B</color>
+    <color name="yellow500">#DD2F54</color>
     <color name="white_30">#15ffffff</color>
 
 

@@ -6,7 +6,7 @@
         <shape>
             <corners android:radius="180dp"/>
             <solid android:color="#004A383C" />
-            <stroke android:color="#00DD2F54" android:width="0dp"/>
+            <stroke android:color="@color/white30" android:width="2dp"/>
         </shape>
     </item>
 
@@ -18,7 +18,7 @@
                     <shape>
                         <corners android:radius="180dp"/>
                         <solid android:color="@color/colorPrimary" />
-                        <stroke android:color="@color/space_transparent" android:width="0dp"/>
+                        <stroke android:color="@color/white30" android:width="2dp"/>
                     </shape>
                 </clip>
             </item>

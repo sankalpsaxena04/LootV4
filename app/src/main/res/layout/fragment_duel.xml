@@ -150,12 +150,12 @@
         android:id="@+id/dan_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="44dp"
         android:layout_marginBottom="196dp"
-        android:fontFamily="@font/popinmedium"
+        android:fontFamily="@font/popinsemibold"
         android:text="Ready To Loot?"
         android:textColor="@color/colorPrimary"
-        android:textSize="15sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

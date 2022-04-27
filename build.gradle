@@ -16,11 +16,11 @@ buildscript {
 
 }
 
-    repositories {
+repositories {
 
-        google()
-        jcenter()
-    }
+    google()
+    jcenter()
+}
 
 
 task clean(type: Delete) {

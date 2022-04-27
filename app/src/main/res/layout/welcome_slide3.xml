@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:scaleType="center"
         android:alpha="0.6"
+        android:background="@drawable/black_gradient_bg"
         android:src="@drawable/squidgames_pos"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout

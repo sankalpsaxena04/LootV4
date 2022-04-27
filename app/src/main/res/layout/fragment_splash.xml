@@ -12,7 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="center"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:src="@drawable/squidgames_pos"
+        android:scrollY="-40dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="324dp" />
 
@@ -26,9 +29,9 @@
         android:layout_marginEnd="51dp"
         android:fontFamily="@font/sgtwo"
         android:gravity="center"
-        android:text="Loot"
+        android:text="@string/app_name"
         android:textColor="@color/white"
-        android:textSize="85dp"
+        android:textSize="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.15"
@@ -76,7 +79,7 @@
         app:layout_constraintHorizontal_bias="0.62"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.011"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.71" />
 
@@ -87,11 +90,11 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="51dp"
-        android:fontFamily="@font/popbold"
+        android:fontFamily="@font/sgon"
         android:gravity="center"
         android:text="Welcome to the Loot"
         android:textColor="@color/white"
-        android:textSize="15dp"
+        android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.15"
@@ -164,7 +167,7 @@
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.27"
+        app:layout_constraintVertical_bias="0.578"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.71" />
 

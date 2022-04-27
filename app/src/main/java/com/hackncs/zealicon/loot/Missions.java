@@ -2,6 +2,7 @@ package com.hackncs.zealicon.loot;
 
 import android.Manifest;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 
 import android.app.ProgressDialog;
@@ -10,6 +11,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.location.Location;
 
 import android.os.Build;
@@ -23,6 +25,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,6 +86,7 @@ public class Missions
     RequestQueue requestQueue;
     SharedPreferences sharedPreferences;
     int triedAttempts = 0;
+    final static String TAG = "MissionsActivity";
 
     public Missions() {
         // Required empty public constructor
@@ -125,13 +132,14 @@ public class Missions
                 for (Location location : locationResult.getLocations()) {
                     // Update UI with location data
                     // ...
-                    if(mission!=null)
+                    if(mission!=null){
                     checkDistance(location);
-//                    Toast.makeText(getActivity(), location.getLatitude() + " " + location.getLongitude(), Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getActivity(), location.getLatitude() + " " + location.getLongitude(), Toast.LENGTH_LONG).show();
+                }
                 }
             }
 
-            ;
+
         };
     }
     @Override
@@ -230,6 +238,7 @@ public class Missions
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void startLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
@@ -271,10 +280,11 @@ public class Missions
                             mission.setMissionID(jsonObject.getInt("id"));
                             mission.setMissionName(jsonObject.getString("mission_name"));
                             mission.setStory(jsonObject.getString("story"));
+                            Log.d(TAG, "onResponse: Mission story : "+jsonObject.get("story"));
                             mission.setDescription(jsonObject.getString("description"));
                             String g = jsonObject.getString("geocode");
-                            mission.setLat(Double.valueOf(g.substring(0, g.indexOf(" "))));
-                            mission.setLng(Double.valueOf(g.substring(g.indexOf(" "))));
+                            mission.setLat(Double.parseDouble(g.substring(0, g.indexOf(" "))));
+                            mission.setLng(Double.parseDouble(g.substring(g.indexOf(" "))));
                             mission.setAnswer(jsonObject.getString("answer"));
                             displayMission();
                         } catch (JSONException e) {
@@ -296,7 +306,7 @@ public class Missions
                         }
                         else
                         {
-                            Toast.makeText(getContext(), "Slow Network Connectivity.. Restart the App when connected", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Slow Network Connectivity.. Restart the App when connected to continue", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(getActivity(), WelcomeSlider.class);
                             startActivity(i);
                         }
@@ -317,7 +327,8 @@ public class Missions
     private void displayMission() {
         switch (state) {
             case STATE_LOCATE:
-                dan_msg.setText(mission.getStory());
+                dan_msg.setText(mission.getMissionName().toUpperCase()+" : \n\n"+mission.getStory());
+               // Toast.makeText(getContext(),"Location : "+mission.getLat()+" "+mission.getLng(), Toast.LENGTH_SHORT).show();
                 break;
             case STATE_SOLVE:
                 stopLocationUpdates();
@@ -341,6 +352,7 @@ public class Missions
         transaction.commit();
     }
 
+    @SuppressLint("MissingPermission")
     private void checkDistance(Location location) {
         Location missionLocation = new Location("");
         missionLocation.setLatitude(mission.getLat());
@@ -350,7 +362,11 @@ public class Missions
         Log.i("MLat",String.valueOf(mission.getLat()));
         Log.i("MLon",String.valueOf(mission.getLng()));
 //        Toast.makeText(getContext(), location.distanceTo(missionLocation)+"", Toast.LENGTH_SHORT).show();
-        if (location.distanceTo(missionLocation) < 5) {
+        long dis = (long) location.distanceTo(missionLocation);
+       // Toast.makeText(getContext(), "Distance : "+dis+"m", Toast.LENGTH_SHORT).show();
+
+        if (location.distanceTo(missionLocation) < 10) {
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
                 stopLocationUpdates();
@@ -359,10 +375,9 @@ public class Missions
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 vibrator.vibrate(VibrationEffect.createWaveform(new long[]{0, 250, 200, 250, 150, 150, 75, 150, 75, 150}, -1));
             } else {
-                vibrator.vibrate(3000);
+                vibrator.vibrate(8000);
             }
             Log.i("Distance",location.distanceTo(missionLocation)+"");
-
             state = 1;
             StringRequest updateUser = new StringRequest(Request.Method.POST,
                     Endpoints.updateUser + userID + "/edit/",

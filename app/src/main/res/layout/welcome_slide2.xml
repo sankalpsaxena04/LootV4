@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:scaleType="center"
         android:src="@drawable/squidgames_pos"
+        android:background="@drawable/black_gradient_bg"
         tools:layout_editor_absoluteX="17dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,11 +22,13 @@
         android:layout_marginTop="52dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="56dp"
-        android:background="@drawable/white_background70"
+        android:background="@drawable/white_background_darker"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <ScrollView
             android:layout_width="0dp"
@@ -38,15 +41,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/popinmedium"
-            android:text="@string/intro2"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:lineSpacingExtra="4dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/popinsemibold"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/intro_page2"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

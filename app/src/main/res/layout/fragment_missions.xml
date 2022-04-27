@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/black_gradient_bg"
-    tools:context="com.hackncs.zealicon.loot.Current_missions">
+    tools:context="com.hackncs.zealicon.loot.Missions">
 
 
     <ImageView
@@ -52,10 +52,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/popinsemibold"
-            android:text=" Your mission will come here..Your mission will come "
+            android:text="Your mission will come here..."
                 android:textColor="@color/white"
                 android:padding="10dp"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
         </ScrollView>
     </LinearLayout>
 

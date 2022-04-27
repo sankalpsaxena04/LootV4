@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/action_bar.xml" value="0.20277777777777778" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/black_button_bg.xml" value="0.128125" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/black_gradient_bg.xml" value="0.19743589743589743" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/card_background_black.xml" value="0.20277777777777778" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/card_background_grey.xml" value="0.128125" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/card_background_red.xml" value="0.20277777777777778" />
@@ -21,22 +23,30 @@
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/ic_baseline_subject_24.xml" value="0.11041666666666666" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/ic_baseline_verified_24.xml" value="0.1" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1935185185185185" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/loot_launcher_background.xml" value="0.11822916666666666" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/rounded_button.xml" value="0.11041666666666666" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/splash_bg.xml" value="0.19074074074074074" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/tabselector.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/vertical_progress.xml" value="0.20277777777777778" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/white15_rectangle.xml" value="0.20277777777777778" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/white_background70.xml" value="0.20277777777777778" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/white_background_darker.xml" value="0.18125" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/white_button_bg.xml" value="0.19743589743589743" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/white_rectangle.xml" value="0.20277777777777778" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/white_rectangle_border_red.xml" value="0.2" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/drawable/whiteboundedback.xml" value="0.20277777777777778" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/activity_dashboard_loot.xml" value="0.16" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/activity_main22.xml" value="0.1859375" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/activity_main3.xml" value="0.1859375" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/activity_mini_game.xml" value="0.16" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/activity_mini_game.xml" value="0.18" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/activity_pre_splash.xml" value="0.10208333333333333" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/activity_pre_splash_screen.xml" value="0.14" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/activity_welcome_slider.xml" value="0.1859375" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/challenge_dialog.xml" value="0.25" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/duel_alert.xml" value="0.2" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_about.xml" value="0.2" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_current_mission.xml" value="0.22" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_current_mission.xml" value="0.16" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_duel.xml" value="0.2" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_grid_tap.xml" value="0.2" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_help.xml" value="0.22" />
@@ -45,14 +55,15 @@
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_login.xml" value="0.18" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_missions.xml" value="0.1859375" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_online_users.xml" value="0.1" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_register.xml" value="0.2" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_splash.xml" value="0.2" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/recycle_cards.xml" value="0.25" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/welcome_slide1.xml" value="0.1859375" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/welcome_slide2.xml" value="0.1859375" />
-        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/welcome_slide3.xml" value="0.18" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_register.xml" value="0.22" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/fragment_splash.xml" value="0.16" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/recycle_cards.xml" value="0.16" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/welcome_slide1.xml" value="0.2" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/welcome_slide2.xml" value="0.2" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/layout/welcome_slide3.xml" value="0.16" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/menu/bottom_navigation_item.xml" value="0.2" />
         <entry key="..\:/Users/janvi soni/loot/app/src/main/res/menu/popup_menu.xml" value="0.1859375" />
+        <entry key="..\:/Users/janvi soni/loot/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1935185185185185" />
       </map>
     </option>
   </component>
