@@ -7,8 +7,8 @@
     tools:context="com.hackncs.zealicon.loot.Missions">
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:layout_marginEnd="46dp"
         android:background="@drawable/white_background70"
@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:padding="15dp"
         android:text="This is Mission Discription.Hello danhow are u..where are you what are you doing"
         android:fontFamily="@font/popinsemibold"
         android:textColor="@color/white"

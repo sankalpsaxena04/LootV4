@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -97,6 +98,7 @@ public class Current_missions extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Drop Mission");
+
                 if (score - (((int) Math.pow(2, dropCount)) * 10) >= 0) {
                     builder.setMessage((((int) Math.pow(2, dropCount)) * 10) + " coins will be deducted!");
                     builder.setPositiveButton("Drop", new DialogInterface.OnClickListener() {
@@ -158,6 +160,10 @@ public class Current_missions extends Fragment {
                             alertDialog.dismiss();
                         }
                     });
+
+
+
+
                 } else {
                     builder.setMessage("You can't drop this mission! Not enough coins!");
                     builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -172,9 +178,12 @@ public class Current_missions extends Fragment {
                             alertDialog.dismiss();
                         }
                     });
+
                 }
                 alertDialog = builder.create();
                 alertDialog.show();
+                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE);
+                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED);
             }
         });
 

@@ -9,7 +9,6 @@
 
         <shape>
             <solid android:color="@color/colorPrimary" />
-            <stroke android:color="@color/black_overlay" android:width="4dp"/>
         </shape>
     </item>
     </layer-list>

@@ -75,7 +75,7 @@ public class Missions
     private boolean requestingLocationUpdates;
 
     static final int STATE_LOCATE = 0, STATE_SOLVE = 1;
-    TextView dan_msg;
+    TextView dan_msg, nearby;
     Mission mission;
     int userStage, state, dropCount, score;
     String userID;
@@ -97,6 +97,7 @@ public class Missions
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_missions, container, false);
         dan_msg = view.findViewById(R.id.dan_msg);
+        nearby = view.findViewById(R.id.nearby);
         BottomNavigationView navigationView = getActivity().findViewById(R.id.bottom_nav);
         navigationView.getMenu().getItem(1).setChecked(true);
 
@@ -298,7 +299,7 @@ public class Missions
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-//                        Log.i("error",error.getMessage());
+                       // Log.i("abcerror",error.getMessage());
                         Toast.makeText(getContext(), "Slow  Network...Error in fetching data!", Toast.LENGTH_SHORT).show();
                         if(triedAttempts<5) {
                             getFragmentManager().beginTransaction().detach(Missions.this).attach(Missions.this).commit();
@@ -362,10 +363,11 @@ public class Missions
         Log.i("MLat",String.valueOf(mission.getLat()));
         Log.i("MLon",String.valueOf(mission.getLng()));
 //        Toast.makeText(getContext(), location.distanceTo(missionLocation)+"", Toast.LENGTH_SHORT).show();
-        long dis = (long) location.distanceTo(missionLocation);
+    //    long dis = (long) location.distanceTo(missionLocation);
        // Toast.makeText(getContext(), "Distance : "+dis+"m", Toast.LENGTH_SHORT).show();
 
-        if (location.distanceTo(missionLocation) < 10) {
+        if (location.distanceTo(missionLocation) < 40000) {
+            nearby.setVisibility(View.GONE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
@@ -373,7 +375,7 @@ public class Missions
 
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                vibrator.vibrate(VibrationEffect.createWaveform(new long[]{0, 250, 200, 250, 150, 150, 75, 150, 75, 150}, -1));
+                vibrator.vibrate(VibrationEffect.createWaveform(new long[]{0, 250, 200, 250, 150, 150, 75, 150, 75, 150,150, 75, 150, 75, 150}, -1));
             } else {
                 vibrator.vibrate(8000);
             }
@@ -412,6 +414,11 @@ public class Missions
                 }
             };
             requestQueue.add(updateUser);
+        }else if (location.distanceTo(missionLocation) < 100){
+            nearby.setVisibility(View.VISIBLE);
+        }else {
+            nearby.setVisibility(View.GONE);
+
         }
     }
     private void showSnackbar(String mainTextStringId, String actionStringId,

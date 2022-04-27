@@ -6,6 +6,21 @@
     android:background="@drawable/black_gradient_bg"
     tools:context="com.hackncs.zealicon.loot.Missions">
 
+    <TextView
+        android:id="@+id/nearby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/popinmedium"
+        android:gravity="center"
+        android:background="@drawable/solid_bg"
+        android:text="Location nearby 🗺️"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -29,33 +44,33 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="46dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/nearby">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="4dp"
-            android:fadeScrollbars="false"
             android:background="@drawable/white_background70"
+            android:fadeScrollbars="false"
             android:scrollbarThumbVertical="@drawable/white_rectangle">
 
             <TextView
                 android:id="@+id/dan_msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/popinsemibold"
-            android:text="Your mission will come here..."
+                android:fontFamily="@font/popinmedium"
+                android:padding="15dp"
+                android:text="Your mission will come here..."
                 android:textColor="@color/white"
-                android:padding="10dp"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
         </ScrollView>
     </LinearLayout>
 
