@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,8 +48,10 @@ public class DashboardLoot extends AppCompatActivity {
     FirebaseFirestore db;
     MediaPlayer mediaPlayer;
     TextView action_bar_usercoins, title_bar;
+    ImageButton vol;
     final static String t1 = "DUEL", t2 = "Missions", t3 = "Leaderboard";
     Fragment fDuel , fMission , fLeaderboard;
+    boolean mute = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class DashboardLoot extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard_loot);
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar2);
 
+        vol = findViewById(R.id.volume);
         title_bar = findViewById(R.id.title_board);
         db= FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -79,10 +84,12 @@ public class DashboardLoot extends AppCompatActivity {
 
 
         mediaPlayer = MediaPlayer.create(this, R.raw.bgmusicsg);
+
         mediaPlayer.setLooping(true);
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.start();
         }
+
 
         bottomNavigationView=findViewById(R.id.bottom_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -111,7 +118,36 @@ public class DashboardLoot extends AppCompatActivity {
             }
         });
 
+
+        vol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!mute){
+                   // stopPlaying();
+                    mediaPlayer.setVolume(0,0);
+                    vol.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24));
+                    mute = true;
+                }else {
+                  //  mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bgmusicsg);
+                  //  mediaPlayer.start();
+                    mediaPlayer.setVolume(1,1);
+                    vol.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_up_24));
+                    mute = false;
+                }
+            }
+        });
+
+
           }
+
+
+        private  void stopPlaying(){
+        if (mediaPlayer != null){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+           // mediaPlayer = null;
+        }
+        }
     @Override
     protected void onResume() {
         super.onResume();

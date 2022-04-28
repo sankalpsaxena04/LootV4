@@ -84,6 +84,18 @@
                             android:textStyle="bold" />
 
 
+                        <ImageButton
+                            android:id="@+id/volume"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/popbold"
+                            android:src="@drawable/ic_baseline_volume_up_24"
+                            android:gravity="center"
+                            android:paddingBottom="3dp"
+                            android:background="@null"
+                            android:textStyle="bold" />
+
+
 
 
 

@@ -329,7 +329,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/home/shobhit/Android-Studio3/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_phone_black_24dp.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../janvi%20soni/AppData/Local/Android/Sdk/icons/material/materialicons/volume_off/baseline_volume_off_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -340,8 +340,8 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_phone_black_24dp" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/.." />
+                            <entry key="outputName" value="ic_baseline_volume_off_24" />
+                            <entry key="sourceFile" value="C:\Users\janvi soni" />
                           </map>
                         </option>
                       </PersistentState>

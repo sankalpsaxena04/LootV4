@@ -279,7 +279,7 @@ public class Current_missions extends Fragment {
     private void updateActionBarDetails()
     {
         TextView user_coins=getActivity().findViewById(R.id.user_coins);
-        user_coins.setText(score+"");
+        user_coins.setText(score+" \uD83E\uDE99");
 
     }
 
