@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -24,8 +25,11 @@ public class Main3Activity extends AppCompatActivity {
         loadFragment(fragment,"splash");
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+    }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBackPressed() {
 //

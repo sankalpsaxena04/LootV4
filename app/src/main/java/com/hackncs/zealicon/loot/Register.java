@@ -75,7 +75,7 @@ public class Register extends Fragment implements View.OnClickListener{
 
         dialog.setTitle("Please Wait");
         dialog.setCancelable(false);
-        dialog.setMessage("Signing in...");
+        dialog.setMessage("Registering you...");
         final Animation blinkAnim = AnimationUtils.loadAnimation(getContext(), R.anim.blink) ;
         register.setOnClickListener(new View.OnClickListener() {
             @Override

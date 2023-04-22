@@ -6,6 +6,7 @@ package com.hackncs.zealicon.loot;
 
 public class APIUtils {
 
+
     public static final String BASE_URL = Endpoints.send;
 
     public static APIService getAPIService() {

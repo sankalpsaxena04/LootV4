@@ -93,98 +93,87 @@ public class Current_missions extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         displayMission();
-        drop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Drop Mission");
+        drop.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Drop Mission");
 
-                if (score - (((int) Math.pow(2, dropCount)) * 10) >= 0) {
-                    builder.setMessage((((int) Math.pow(2, dropCount)) * 10) + " coins will be deducted!");
-                    builder.setPositiveButton("Drop", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            userStage += 1;
-                            state = 0;
-                            score -= ((int) Math.pow(2, dropCount)) * 10;
-                            dropCount += 1;
-                            StringRequest updateUser = new StringRequest(Request.Method.POST,
-                                    Endpoints.updateUser + userID + "/edit/",
-                                    new Response.Listener<String>() {
-                                        @Override
-                                        public void onResponse(String response) {
+            if (score - (((int) Math.pow(2, dropCount)) * 10) >= 0) {
+                builder.setMessage((((int) Math.pow(2, dropCount)) * 10) + " coins will be deducted!");
+                builder.setPositiveButton("Drop", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        userStage += 1;
+                        state = 0;
+                        score -= ((int) Math.pow(2, dropCount)) * 10;
+                        dropCount += 1;
+                        StringRequest updateUser = new StringRequest(Request.Method.POST,
+                                Endpoints.updateUser + userID + "/edit/",
+                                response -> {
 //                                            Log.d("dropVolley", "response");
-                                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                                            editor.putInt("com.hackncs.score", score);
-                                            editor.putInt("com.hackncs.stage", userStage);
-                                            editor.putInt("com.hackncs.state", state);
-                                            editor.putInt("com.hackncs.dropCount", dropCount);
-                                            editor.apply();
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putInt("com.hackncs.score", score);
+                                    editor.putInt("com.hackncs.stage", userStage);
+                                    editor.putInt("com.hackncs.state", state);
+                                    editor.putInt("com.hackncs.dropCount", dropCount);
+                                    editor.apply();
 
-                                            updateActionBarDetails();
-                                            //TODO:load fragment
-                                            loadFragment(new Missions(),"missions");
-                                        }
-                                    },
-                                    new Response.ErrorListener() {
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
-                                            Log.d("dropVolley", "error");
-                                        }
-                                    }) {
-                                @Override
-                                protected Map<String, String> getParams() throws AuthFailureError {
-                                    Map map = new HashMap();
-                                    map.put("score", score+"");
-                                    map.put("stage", userStage+"");
-                                    map.put("mission_state", "false");
-                                    map.put("drop_count", String.valueOf(dropCount));
-                                    return map;
-                                    //TODO:Confirm
-                                }
-                                @Override
-                                public Map<String, String> getHeaders() throws AuthFailureError {
-                                    Map<String, String> params = new HashMap<>();
-                                    params.put("x-auth",Endpoints.apikey);
-                                    return params;
-                                }
+                                    updateActionBarDetails();
+                                    //TODO:load fragment
+                                    loadFragment(new Missions(),"missions");
+                                },
+                                error -> Log.d("dropVolley", "error")) {
+                            @Override
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map map = new HashMap();
+                                map.put("score", score+"");
+                                map.put("stage", userStage+"");
+                                map.put("mission_state", "false");
+                                map.put("drop_count", String.valueOf(dropCount));
+                                return map;
+                                //TODO:Confirm
+                            }
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
+                                Map<String, String> params = new HashMap<>();
+                                params.put("x-auth",Endpoints.apikey);
+                                return params;
+                            }
 
-                            };
-                            requestQueue.add(updateUser);
+                        };
+                        requestQueue.add(updateUser);
 
-                        }
-                    });
-                    builder.setNegativeButton("Stay", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            alertDialog.dismiss();
-                        }
-                    });
+                    }
+                });
+                builder.setNegativeButton("Stay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        alertDialog.dismiss();
+                    }
+                });
 
 
 
 
-                } else {
-                    builder.setMessage("You can't drop this mission! Not enough coins!");
-                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            alertDialog.dismiss();
-                        }
-                    });
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            alertDialog.dismiss();
-                        }
-                    });
+            } else {
+                builder.setMessage("You can't drop this mission! Not enough coins!");
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        alertDialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        alertDialog.dismiss();
+                    }
+                });
 
-                }
-                alertDialog = builder.create();
-                alertDialog.show();
-                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE);
-                alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED);
             }
+            alertDialog = builder.create();
+            alertDialog.show();
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLUE);
+            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED);
         });
 
         submit.setOnClickListener(new View.OnClickListener() {

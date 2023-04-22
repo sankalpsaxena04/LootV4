@@ -12,6 +12,7 @@
     <color name="darkGrey70">#70363131</color>
     <color name="darkGrey90">#80363131</color>
     <color name="headingColor">#141212</color>
+    <color name="space_transparent">#31272525</color>
     <color name="actionBarText">#272525</color>
     <color name="redCard">#DB3A3A</color>
 
