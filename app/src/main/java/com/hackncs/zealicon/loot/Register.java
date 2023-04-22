@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -31,6 +33,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.hackncs.zealicon.loot.databinding.FragmentRegisterBinding;
+import com.orhanobut.logger.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,10 +43,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import static androidx.constraintlayout.motion.widget.MotionScene.TAG;
+
 
 public class Register extends Fragment implements View.OnClickListener{
 
+    private final String TAG = this.getClass().getSimpleName();
     private FirebaseAuth mAuth;
     View view;
     EditText name, email, contact, zeal, username, password;
@@ -54,6 +59,7 @@ public class Register extends Fragment implements View.OnClickListener{
     int selectedAvatar;
     FirebaseUser firebaseUser;
     User user;
+    FragmentRegisterBinding binding;
     public Register() {
         // Required empty public constructor
     }
@@ -62,7 +68,10 @@ public class Register extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_register, container, false);
+        binding = FragmentRegisterBinding.bind(view);
         initializeViews();
+        Logger.t("Testing logger").d("Hello logger");
+
         return view;
     }
 
@@ -77,6 +86,8 @@ public class Register extends Fragment implements View.OnClickListener{
         dialog.setCancelable(false);
         dialog.setMessage("Registering you...");
         final Animation blinkAnim = AnimationUtils.loadAnimation(getContext(), R.anim.blink) ;
+
+       //region Register button
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,6 +137,8 @@ public class Register extends Fragment implements View.OnClickListener{
                 }
             }
         });
+        //endregion
+
     }
     private void createUser(){
         updateFirebase(firebaseUser);
@@ -185,6 +198,8 @@ public class Register extends Fragment implements View.OnClickListener{
     }
 
     private void initializeViews() {
+
+
         name = view.findViewById(R.id.name);
         email = view.findViewById(R.id.email);
         contact = view.findViewById(R.id.contactNumber);
@@ -307,6 +322,11 @@ public class Register extends Fragment implements View.OnClickListener{
                 Log.i("Selected",selectedAvatar+"");
             }
         }
+
+
+        binding.scrollView2.post(() -> {
+           binding.scrollView2.smoothScrollBy(0,binding.scrollView2.getBottom());
+        });
 
     }
 

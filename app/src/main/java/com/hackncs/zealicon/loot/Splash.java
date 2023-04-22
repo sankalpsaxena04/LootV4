@@ -247,7 +247,7 @@ public class Splash extends Fragment {
         if(logged_in) {
             isVerified=fbuser.isEmailVerified();
             if(isVerified)
-            syncUser(fbuser.getUid());
+                syncUser(fbuser.getUid());
         }
     }
 
