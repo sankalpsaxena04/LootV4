@@ -27,6 +27,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.hackncs.zealicon.loot.databinding.FragmentLoginBinding;
 
 
 import org.json.JSONException;
@@ -51,6 +52,7 @@ public class Login extends Fragment {
     Button login;
     TextView sendMail;
     FirebaseUser firebaseUser;
+    FragmentLoginBinding binding;
 
     public Login() {
         // Required empty public constructor
@@ -59,7 +61,8 @@ public class Login extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -109,6 +112,15 @@ public class Login extends Fragment {
         password = getView().findViewById(R.id.password);
         login = getView().findViewById(R.id.login);
         sendMail=getView().findViewById(R.id.sendmail);
+
+
+        binding.backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                assert getFragmentManager() != null;
+                getFragmentManager().popBackStack();
+            }
+        });
 
         sendMail.setOnClickListener(new View.OnClickListener() {
             @Override

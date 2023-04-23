@@ -46,6 +46,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.hackncs.zealicon.loot.databinding.FragmentRegisterBinding;
 import com.orhanobut.logger.Logger;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -87,7 +88,7 @@ public class Register extends Fragment implements View.OnClickListener{
         initializeViews();
         Logger.t("Testing logger").d(getDeviceId(Objects.requireNonNull(getActivity()).getApplicationContext()));
         deviceID = getDeviceId(getActivity().getApplicationContext());
-        validateDeviceID();
+      //  validateDeviceID();
         return view;
     }
 
@@ -185,7 +186,7 @@ public class Register extends Fragment implements View.OnClickListener{
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         firebaseUser.delete();
-                        Log.d("volley request", "error");
+                        Logger.e("volley request : error : \\n Error message : \"+error.getMessage()+\"\\n Cause \"+error.getCause()+\"\\n\"+ Arrays.toString(error.getStackTrace())");
                         Toast.makeText(getContext(), "Server: Error Occurred!", Toast.LENGTH_SHORT).show();
                     }
                 }) {

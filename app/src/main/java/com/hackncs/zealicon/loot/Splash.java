@@ -41,6 +41,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.hackncs.zealicon.loot.databinding.FragmentSplashBinding;
 import com.orhanobut.logger.Logger;
 
 import org.json.JSONException;
@@ -71,6 +72,7 @@ public class Splash extends Fragment {
     ArrayList<Mission> missionsList = new ArrayList<>();
     ImageView title;
     boolean isConnected, logged_in, synced_user, synced_missions, isVerified;
+    FragmentSplashBinding binding;
 
     public Splash() {
         // Required empty public constructor
@@ -85,7 +87,8 @@ public class Splash extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         user = new User();
-        return inflater.inflate(R.layout.fragment_splash, container, false);
+        binding = FragmentSplashBinding.inflate(inflater,container,false);
+        return binding.getRoot();
     }
 
 
@@ -285,10 +288,11 @@ public class Splash extends Fragment {
         ProgressBar loader = (ProgressBar) getView().findViewById(R.id.loadersplash);
         RelativeLayout layout = getView().findViewById(R.id.rel_layout);
         loader.setVisibility(View.GONE);
-        layout.setVisibility(View.VISIBLE);
-        Button login_button =  getView().findViewById(R.id.login_button);
-        Button register_button =  getView().findViewById(R.id.register_button);
-        login_button.setOnClickListener(new View.OnClickListener() {
+        layout.setVisibility(View.GONE);
+        binding.loginbtn.setVisibility(View.VISIBLE);
+        binding.getStartedButton.setVisibility(View.VISIBLE);
+
+       binding.loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -298,7 +302,7 @@ public class Splash extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-        register_button.setOnClickListener(new View.OnClickListener() {
+        binding.getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

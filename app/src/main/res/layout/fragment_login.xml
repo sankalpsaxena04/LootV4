@@ -6,146 +6,158 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/lootblackbg"
     tools:context="com.hackncs.zealicon.loot.Login"
     >
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageFilterView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:scaleX="1.1"
-        android:scaleY="1.1"
-        android:src="@drawable/fone_final"/>
-
-
-    <TextView
-        android:id="@+id/loot_title"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="51dp"
-        android:fontFamily="@font/sgtwo"
-        android:gravity="center"
-        android:text="Loot"
-        android:textColor="@color/white"
-        android:textSize="85dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.71" />
-
-
-    <TextView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="51dp"
-        android:fontFamily="@font/sgon"
-        android:gravity="center"
-        android:text="Let the loot begin"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loot_title"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.71" />
 
     <LinearLayout
+
+
+
         android:id="@+id/imageView5"
-        android:layout_width="290dp"
+        android:layout_width="match_parent"
         android:layout_height="409dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="57dp"
-        android:background="@drawable/white15_rectangle"
         android:orientation="vertical"
         android:visibility="visible"
-        android:paddingStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loot_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.71">
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            >
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/backbutton"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_arrow_back_ios_24"
+                android:background="@null"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Log in"
+                android:textSize="25dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/popinsemibold"
 
-        <EditText
+                android:textColor="@color/white"
+                />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/email"
-            android:layout_width="169dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginLeft="42dp"
-            android:layout_marginTop="87dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginRight="42dp"
-            android:layout_marginBottom="9dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/edittext_layout_black"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/colorPrimary"
             android:ems="10"
-            android:fontFamily="@font/avenir_next_lt_pro_demi"
+            android:fontFamily="@font/popinmedium"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:paddingBottom="5dp"
             android:textColor="@color/white30"
-            android:textColorHint="@color/darkGrey70"
-            android:textSize="20sp" />
+            android:textColorHint="#70D6D6D6"
+            android:textSize="18sp"
+            android:visibility="visible" />
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="169dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginLeft="42dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginTop="9dp"
-            android:layout_marginEnd="42dp"
-            android:layout_marginRight="42dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:background="@drawable/edittext_layout_black"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/colorPrimary"
             android:ems="10"
-            android:fontFamily="@font/avenir_next_lt_pro_demi"
+            android:fontFamily="@font/popinmedium"
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingBottom="5dp"
             android:textColor="@color/white30"
-            android:textColorHint="@color/darkGrey70"
-            android:textSize="20sp" />
+            android:textColorHint="#70D6D6D6"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+
 
         <Button
             android:id="@+id/login"
-            android:layout_width="106dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="74dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginTop="42dp"
-            android:layout_marginEnd="73dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/card_background_yellow"
-            android:fontFamily="@font/avenir_next_lt_pro_bold"
+            android:fontFamily="@font/avenir_next_lt_pro_demi"
             android:text="Login"
+            android:textSize="18dp"
+            android:textAllCaps="false"
             android:textColor="@color/white" />
+
 
         <TextView
             android:id="@+id/sendmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/avenir_next_lt_pro_demi"
-            android:text="Resend Mail"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/popinmedium"
+            android:text="Resend Mail ?"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
+        <TextView
+            android:id="@+id/loginbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/popinmedium"
+            android:gravity="center"
+            android:text="New player? Create account here"
+            android:textColor="#CFCFCF"
+            android:textSize="18dp"
+            android:layout_marginTop="14dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/imageFilterView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintHorizontal_bias="0.458"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/getStartedButton"
+            app:layout_constraintVertical_bias="0.226"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.71" />
 
 
 

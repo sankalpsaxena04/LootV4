@@ -6,10 +6,13 @@
     <color name="colorAccent">#90ffffff</color>
 
     <color name="black">#000000</color>
+    <color name="lootblackbg">#191919</color>
     <color name="white">#ffffff</color>
     <color name="white70">#70ffffff</color>
     <color name="darkGrey">#363131</color>
     <color name="darkGrey70">#70363131</color>
+    <color name="hintcolor">#999999</color>
+
     <color name="darkGrey90">#80363131</color>
     <color name="headingColor">#141212</color>
     <color name="space_transparent">#31272525</color>
