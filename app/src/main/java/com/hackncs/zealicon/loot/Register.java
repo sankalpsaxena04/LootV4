@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -40,8 +41,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
+
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.hackncs.zealicon.loot.databinding.FragmentRegisterBinding;
 import com.orhanobut.logger.Logger;
 
@@ -90,49 +91,11 @@ public class Register extends Fragment implements View.OnClickListener{
         return view;
     }
 
-    public void validateDeviceID(){
-        db = FirebaseFirestore.getInstance();
-        CollectionReference deviceIDCollectionRef = db.collection("deviceIDs");
-        String docID = deviceID;
-        Logger.d(docID);
-        DocumentReference didRef = deviceIDCollectionRef.document(docID);
-
-
-        didRef.get().addOnSuccessListener(documentSnapshot -> {
-
-            if (documentSnapshot.exists()){
-
-                    String modelName = documentSnapshot.getString("modelName");
-                    String email = documentSnapshot.getString("email");
-                    createDialog("Account exists","Your account on another phone ("+modelName+") exists with" +
-                            "email ID "+email).show();
-            }else {
-                Toast.makeText(getContext(),"Validated", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-    }
-
-
-    public AlertDialog createDialog(String title, String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(title);
-        builder.setMessage(message);
-
-        builder.setPositiveButton("OK", (dialog, which) -> {
-            getActivity().finish();
-        });
-
-        return builder.create();
-    }
-
 
     @SuppressLint("HardwareIds")
     public static String getDeviceId(Context context) {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
-
 
 
     @Override
@@ -425,23 +388,78 @@ public class Register extends Fragment implements View.OnClickListener{
 
     }
     public void getFCMToken(){
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
-                            return;
-                        }
 
-                        // Get new Instance ID token
-                        String token = task.getResult().getToken();
-                        Log.i("FCMTOKEN",token);
-                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("com.hackncs.FCMToken", token);
-                        editor.commit();
-                    }
-                });
+
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if(!task.isComplete()){
+                Log.w(TAG, "getInstanceId failed", task.getException());
+                return;
+            }
+
+            String token = task.getResult();
+            Log.i("FCMTOKEN",token);
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("com.hackncs.FCMToken", token);
+            editor.apply();
+
+        });
+
+    }
+
+
+    public void validateDeviceID(){
+        CollectionReference deviceIDCollectionRef = db.collection("deviceIDs");
+        String docID = deviceID;
+
+
+        Logger.d(docID);
+        DocumentReference didRef = deviceIDCollectionRef.document(docID);
+
+
+        didRef.get().addOnSuccessListener(documentSnapshot -> {
+
+            if (documentSnapshot.exists()){
+
+                String email = documentSnapshot.getString("email");
+                String modelName = documentSnapshot.getString("modelName");
+                String username = documentSnapshot.getString("username");
+
+                createDialog("Account exists","Account exists with following creds :\n\nDevice model : "+modelName+" \nEmail ID : "+email+"\nUsername : "+username+"\n\nLogin using above ID to continue...").show();
+            }else {
+                Toast.makeText(requireContext(),"Validated", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(e->{
+            Toast.makeText(requireContext(),"Error occurred while retrieving", Toast.LENGTH_SHORT).show();
+
+        });
+
+    }
+
+
+    public AlertDialog createDialog(String title, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+
+        builder.setPositiveButton("Exit", (dialog, which) -> {
+            Objects.requireNonNull(getActivity()).finish();
+        })
+        ;
+
+        AlertDialog dialog = builder.create();
+
+        dialog.setOnShowListener( new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface arg0) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
+
+            }
+        });
+
+        dialog.setCancelable(false);
+
+        return dialog;
     }
 }

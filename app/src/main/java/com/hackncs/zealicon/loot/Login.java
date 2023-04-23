@@ -26,8 +26,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -243,23 +243,23 @@ public class Login extends Fragment {
         }
     }
     public void getFCMToken(){
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
-                            return;
-                        }
 
-                        // Get new Instance ID token
-                        String token = task.getResult().getToken();
-                        Log.i("FCMTOKEN",token);
-                        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("com.hackncs.FCMToken", token);
-                        editor.commit();
-                    }
-                });
+
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if(!task.isComplete()){
+                Log.w(TAG, "getInstanceId failed", task.getException());
+                return;
+            }
+
+
+            String token = task.getResult();
+            Log.i("FCMTOKEN",token);
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("com.hackncs.FCMToken", token);
+            editor.apply();
+
+        });
+
     }
 }

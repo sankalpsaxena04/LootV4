@@ -2,8 +2,10 @@ package com.hackncs.zealicon.loot;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -30,6 +32,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -46,7 +50,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -56,6 +62,7 @@ public class Splash extends Fragment {
 
     private FirebaseAuth mAuth;
     FirebaseDatabase database;
+    FirebaseFirestore db;
     DatabaseReference users,missions;
     FirebaseUser fbuser;
     User user;
@@ -109,8 +116,8 @@ public class Splash extends Fragment {
         title.setAnimation(popup);
         loader.setAnimation(blinkinf);
 
+        db  = FirebaseFirestore.getInstance();
 
-        validateDeviceID();
         //blink.start();
         new CountDownTimer(5100, 1) {
             @Override
@@ -303,43 +310,30 @@ public class Splash extends Fragment {
         });
     }
 
-    public void validateDeviceID(){
-       FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference deviceIDCollectionRef = db.collection("deviceIDs");
+
+    public void saveDeviceID(){
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("email", "sudoarmax@gmail.com");
+        data.put("modelName", "Pixel a2");
         String docID = "e0dcb34326976f23";
-        Logger.d(docID);
-        DocumentReference didRef = deviceIDCollectionRef.document(docID);
 
 
-        didRef.get().addOnSuccessListener(documentSnapshot -> {
+        db.collection("deviceIDs")
+                .document(docID)
+                .set(data)
+                .addOnSuccessListener(aVoid -> {
+                    Logger.d("Data added");
+                    Toast.makeText(getContext(), "Data added", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Logger.d("Data addition ");
+                    Toast.makeText(getContext(), "Error addition", Toast.LENGTH_SHORT).show();
 
-            if (documentSnapshot.exists()){
-
-                String modelName = documentSnapshot.getString("modelName");
-                String email = documentSnapshot.getString("email");
-                createDialog("Account exists","Your account on another phone ("+modelName+") exists with" +
-                        "email ID "+email).show();
-            }else {
-                Toast.makeText(requireContext(),"Validated", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(e->{
-            Toast.makeText(requireContext(),"Error occurred while retrieving", Toast.LENGTH_SHORT).show();
-
-        });
+                });
 
 
     }
 
 
-    public AlertDialog createDialog(String title, String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(title);
-        builder.setMessage(message);
-
-        builder.setPositiveButton("OK", (dialog, which) -> {
-            getActivity().finish();
-        });
-
-        return builder.create();
-    }
 }

@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:src="@drawable/squidgames_pos"
         android:background="@color/darkGrey70"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
 
         />
 
@@ -26,6 +26,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center">
@@ -284,7 +285,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="15dp"
                 android:gravity="center">
 
                 <RelativeLayout
@@ -360,9 +361,9 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/card_background_yellow"
                 android:clickable="true"
                 android:elevation="2dp"

@@ -22,6 +22,7 @@
     <color name="primary30">#30c43b67</color>
 
     <color name="bgBottomNavigation">#fe485a</color>
+    <color name="NavigationColor">#22242A</color>
     <color name="black_overlay">#535c68</color>
 
     <!-- Screens background color-->
@@ -58,4 +59,4 @@
 
 
 
-    </resources>
+</resources>

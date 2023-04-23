@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     tools:context="com.hackncs.zealicon.loot.Splash">
 
 
@@ -14,7 +13,6 @@
         android:scaleType="centerCrop"
         android:scaleX="1"
         android:scaleY="1"
-        android:scrollY="-40dp"
         android:src="@drawable/squidgames_pos"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="324dp" />

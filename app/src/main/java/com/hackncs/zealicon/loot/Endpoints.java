@@ -1,13 +1,17 @@
 package com.hackncs.zealicon.loot;
 
 public class Endpoints {
-    public static String syncRequest = "http://13.232.136.154:8089/api/users/";
-    public static String register = "http://13.232.136.154:8089/api/users/register/";
-    public static String leaders = "http://13.232.136.154:8089/api/users/leaderboard/";
-    public static String fetchMission = "http://13.232.136.154:8089/api/missions/";
-    public static String updateUser = "http://13.232.136.154:8089/api/users/";
-    public static String send = "http://13.232.136.154:8089/";
-    public static String duel = "http://13.232.136.154:8089/api/duels/";
+
+    //static String site = "loot-api.zealicon.in";
+    static String site = "localhost:8089";
+
+    public static String syncRequest = String.format("http://%s/api/users/",site);
+    public static String register = String.format("http://%s/api/users/register/",site);
+    public static String leaders = String.format("http://%s/api/users/leaderboard/",site);
+    public static String fetchMission = String.format("http://%s/api/missions/",site);
+    public static String updateUser = String.format("http://%s/api/users/",site);
+    public static String send = String.format("http://%s/",site);
+    public static String duel = String.format("http://%s/api/duels/",site);
     public static String apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJsb290QDIwMjIiLCJpYXQiOjE1NDgzMTMyNjJ9.-UwA-73S-AkATcnuadwWh8kjslUmZXJkkDVS_-LDnxE";
 }
 
