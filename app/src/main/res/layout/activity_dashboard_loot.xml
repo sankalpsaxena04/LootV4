@@ -11,9 +11,11 @@
         android:id="@+id/imageFilterView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
         android:background="@drawable/gradientback"
-        android:src="@drawable/squidgames_pos"/>
+        android:src="@drawable/squidgames_pos"
+
+        />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout3"

@@ -1,5 +1,6 @@
 package com.hackncs.zealicon.loot;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,6 +34,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.orhanobut.logger.Logger;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,7 +62,7 @@ public class Splash extends Fragment {
     ProgressBar loader;
     Animation fade , blinkinf, popup;
     ArrayList<Mission> missionsList = new ArrayList<>();
-    TextView title;
+    ImageView title;
     boolean isConnected, logged_in, synced_user, synced_missions, isVerified;
 
     public Splash() {
@@ -103,6 +109,8 @@ public class Splash extends Fragment {
         title.setAnimation(popup);
         loader.setAnimation(blinkinf);
 
+
+        validateDeviceID();
         //blink.start();
         new CountDownTimer(5100, 1) {
             @Override
@@ -293,5 +301,45 @@ public class Splash extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+    }
+
+    public void validateDeviceID(){
+       FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference deviceIDCollectionRef = db.collection("deviceIDs");
+        String docID = "e0dcb34326976f23";
+        Logger.d(docID);
+        DocumentReference didRef = deviceIDCollectionRef.document(docID);
+
+
+        didRef.get().addOnSuccessListener(documentSnapshot -> {
+
+            if (documentSnapshot.exists()){
+
+                String modelName = documentSnapshot.getString("modelName");
+                String email = documentSnapshot.getString("email");
+                createDialog("Account exists","Your account on another phone ("+modelName+") exists with" +
+                        "email ID "+email).show();
+            }else {
+                Toast.makeText(requireContext(),"Validated", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(e->{
+            Toast.makeText(requireContext(),"Error occurred while retrieving", Toast.LENGTH_SHORT).show();
+
+        });
+
+
+    }
+
+
+    public AlertDialog createDialog(String title, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            getActivity().finish();
+        });
+
+        return builder.create();
     }
 }

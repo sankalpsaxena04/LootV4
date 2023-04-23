@@ -1,10 +1,15 @@
 package com.hackncs.zealicon.loot;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,10 +31,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
@@ -38,6 +47,7 @@ import com.orhanobut.logger.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -58,8 +68,10 @@ public class Register extends Fragment implements View.OnClickListener{
     FirebaseFirestore db;
     int selectedAvatar;
     FirebaseUser firebaseUser;
+    FirebaseFirestore firestore;
     User user;
     FragmentRegisterBinding binding;
+    String deviceID;
     public Register() {
         // Required empty public constructor
     }
@@ -69,11 +81,59 @@ public class Register extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_register, container, false);
         binding = FragmentRegisterBinding.bind(view);
-        initializeViews();
-        Logger.t("Testing logger").d("Hello logger");
 
+
+        initializeViews();
+        Logger.t("Testing logger").d(getDeviceId(Objects.requireNonNull(getActivity()).getApplicationContext()));
+        deviceID = getDeviceId(getActivity().getApplicationContext());
+        validateDeviceID();
         return view;
     }
+
+    public void validateDeviceID(){
+        db = FirebaseFirestore.getInstance();
+        CollectionReference deviceIDCollectionRef = db.collection("deviceIDs");
+        String docID = deviceID;
+        Logger.d(docID);
+        DocumentReference didRef = deviceIDCollectionRef.document(docID);
+
+
+        didRef.get().addOnSuccessListener(documentSnapshot -> {
+
+            if (documentSnapshot.exists()){
+
+                    String modelName = documentSnapshot.getString("modelName");
+                    String email = documentSnapshot.getString("email");
+                    createDialog("Account exists","Your account on another phone ("+modelName+") exists with" +
+                            "email ID "+email).show();
+            }else {
+                Toast.makeText(getContext(),"Validated", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+
+    public AlertDialog createDialog(String title, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            getActivity().finish();
+        });
+
+        return builder.create();
+    }
+
+
+    @SuppressLint("HardwareIds")
+    public static String getDeviceId(Context context) {
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+    }
+
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -96,45 +156,49 @@ public class Register extends Fragment implements View.OnClickListener{
 
                 if (!validation()) {
                     Toast.makeText(getActivity(), "Please fill in all the field", Toast.LENGTH_SHORT).show();
-                } else {
-                    dialog.show();
-                    mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        dialog.dismiss();
-                                        firebaseUser = mAuth.getCurrentUser();
-                                        assert firebaseUser != null;
-                                        firebaseUser.sendEmailVerification().addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if(task.isSuccessful()){
-                                                    Toast.makeText(getActivity(),
-                                                            "Verification Mail Sent. Please verify to continue",
-                                                            Toast.LENGTH_SHORT).show();
-                                                    createUser();
+                }else {
+                        dialog.show();
+                        mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            dialog.dismiss();
+                                            firebaseUser = mAuth.getCurrentUser();
+                                            assert firebaseUser != null;
+                                            firebaseUser.sendEmailVerification().addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        Toast.makeText(getActivity(),
+                                                                "Verification Mail Sent. Please verify to continue",
+                                                                Toast.LENGTH_SHORT).show();
+                                                        createUser();
+                                                    }
+                                                    else{
+                                                        firebaseUser.delete();
+                                                        Log.e(TAG, "sendEmailVerification", task.getException());
+                                                        Toast.makeText(getActivity(),
+                                                                "Failed to send verification email.Invalid Email. Try Again",
+                                                                Toast.LENGTH_SHORT).show();
+                                                    }
                                                 }
-                                                else{
-                                                    firebaseUser.delete();
-                                                    Log.e(TAG, "sendEmailVerification", task.getException());
-                                                    Toast.makeText(getActivity(),
-                                                            "Failed to send verification email.Invalid Email. Try Again",
-                                                            Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
+                                            });
 
-                                    } else {
-                                        dialog.dismiss();
-                                        Toast.makeText(getContext(), "Firebase : Registration failed." + task.getException().getMessage(),
-                                                Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            dialog.dismiss();
+                                            Toast.makeText(getContext(), "Firebase : Registration failed." + task.getException().getMessage(),
+                                                    Toast.LENGTH_SHORT).show();
 
+                                        }
                                     }
-                                }
-                            });
+                                });
+
+
 
                 }
+
+
             }
         });
         //endregion

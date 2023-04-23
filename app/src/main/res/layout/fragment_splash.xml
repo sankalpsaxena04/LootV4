@@ -11,35 +11,14 @@
         android:id="@+id/imageFilterView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="center"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
-        android:src="@drawable/squidgames_pos"
+        android:scaleType="centerCrop"
+        android:scaleX="1"
+        android:scaleY="1"
         android:scrollY="-40dp"
+        android:src="@drawable/squidgames_pos"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="324dp" />
 
-
-    <TextView
-        android:id="@+id/loot_title"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="51dp"
-        android:fontFamily="@font/sgtwo"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="55dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintHorizontal_bias="0.469"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.71" />
 
     <!--    <Button-->
 <!--        android:id="@+id/getstarted_btn"-->
@@ -58,6 +37,48 @@
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/loader" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/loot_title"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginStart="56dp"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:layout_marginEnd="51dp"-->
+<!--        android:fontFamily="@font/sgtwo"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/app_name"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="60dp"-->
+<!--        android:elevation="5dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHeight_default="percent"-->
+<!--        app:layout_constraintHeight_percent="0.15"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintWidth_default="percent"-->
+<!--        app:layout_constraintWidth_percent="0.71" />-->
+
+
+    <ImageView
+        android:id="@+id/loot_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:fontFamily="@font/sgtwo"
+        android:scaleType="center"
+        android:gravity="center"
+        android:src="@drawable/group_8156"
+        android:text="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ncs_logo"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.71" />
 
     <ImageView
         android:id="@+id/ncs_logo"
@@ -92,9 +113,10 @@
         android:layout_marginEnd="51dp"
         android:fontFamily="@font/sgon"
         android:gravity="center"
+        android:visibility="gone"
         android:text="Welcome to the Loot"
         android:textColor="@color/white"
-        android:textSize="12dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.15"
@@ -128,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:background="@drawable/card_background_yellow"
-            android:fontFamily="@font/avenir_next_lt_pro_bold"
+            android:fontFamily="@font/avenir_next_lt_pro_demi"
             android:text="Login"
             android:textAllCaps="false"
             android:textColor="@color/white30"
@@ -140,7 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:background="@drawable/card_background_yellow"
-            android:fontFamily="@font/avenir_next_lt_pro_bold"
+            android:fontFamily="@font/avenir_next_lt_pro_demi"
             android:text="Sign Up"
             android:textAllCaps="false"
             android:textColor="@color/white30"
@@ -167,7 +189,7 @@
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.578"
+        app:layout_constraintVertical_bias="0.261"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.71" />
 

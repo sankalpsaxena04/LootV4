@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#DD2F54</color>
-    <color name="colorPrimaryDark">#DD2F54</color>
+    <color name="colorPrimary">#ED1A77</color>
+    <color name="colorPrimaryDark">#ED1A77</color>
     <color name="colorAccent">#90ffffff</color>
 
     <color name="black">#000000</color>
@@ -37,9 +37,9 @@
 
 
     <!-- dots active colors -->
-    <color name="dot_light_screen1">#DD2F54</color>
-    <color name="dot_light_screen2">#DD2F54</color>
-    <color name="dot_light_screen3">#DD2F54</color>
+    <color name="dot_light_screen1">#ED1A77</color>
+    <color name="dot_light_screen2">#ED1A77</color>
+    <color name="dot_light_screen3">#ED1A77</color>
 
 
     <array name="array_dot_active">
