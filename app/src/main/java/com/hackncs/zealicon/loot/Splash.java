@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -50,6 +51,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -115,18 +117,21 @@ public class Splash extends Fragment {
          fade = AnimationUtils.loadAnimation(getContext(), R.anim.fadeanim);
          blinkinf = AnimationUtils.loadAnimation(getContext(), R.anim.blink_infinite);
          popup = AnimationUtils.loadAnimation(getContext(), R.anim.popup);
-        loader.setMax(5000);
+         int timeout = 2000;
+        loader.setMax(timeout);
         title.setAnimation(popup);
         loader.setAnimation(blinkinf);
 
         db  = FirebaseFirestore.getInstance();
 
+        if (!isEmulator()){
+
         //blink.start();
-        new CountDownTimer(5100, 1) {
+        new CountDownTimer(timeout+100, 1) {
             @Override
             public void onTick(long l) {
-                int progress=(int)((5000-l)/50);
-                loader.setProgress(5000-(int)l);
+                //int progress=(int)((5000-l)/50);
+                loader.setProgress(timeout-(int)l);
             }
 
             @Override
@@ -150,11 +155,60 @@ public class Splash extends Fragment {
                 }
                 else {
                     Toast.makeText(getActivity(),"You're not connected!",Toast.LENGTH_SHORT).show();
-                    getActivity().finish();
+                    Objects.requireNonNull(getActivity()).finish();
                 }
             }
-        }, 5000);
+        }, timeout);
+        }else {
+
+            createDialog("Emulator detected", "Loot cannot run on emulator for security reasons", true).show();
+
+        }
+
     }
+
+
+    public AlertDialog createDialog(String title, String message, Boolean isCancellable){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+
+        builder.setPositiveButton("Exit", (dialog, which) -> {
+            Objects.requireNonNull(getActivity()).finish();
+        })
+        ;
+
+        AlertDialog dialog = builder.create();
+
+        dialog.setOnShowListener( new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface arg0) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
+
+            }
+        });
+
+        dialog.setCancelable(isCancellable);
+
+        return dialog;
+    }
+
+    public static boolean isEmulator() {
+        boolean isEmulator = false;
+        String model = Build.MODEL;
+        String product = Build.PRODUCT;
+        String manufacturer = Build.MANUFACTURER;
+        String brand = Build.BRAND;
+        if (model != null && model.toLowerCase().contains("sdk")
+                || product != null && product.toLowerCase().contains("sdk")
+                || manufacturer != null && manufacturer.toLowerCase().contains("genymotion")
+                || brand != null && brand.toLowerCase().contains("generic")) {
+            isEmulator = true;
+        }
+        return isEmulator;
+    }
+
 
     @Override
     public void onStart() {

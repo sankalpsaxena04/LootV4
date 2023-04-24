@@ -363,16 +363,17 @@ public class Missions
         Log.i("MLat",String.valueOf(mission.getLat()));
         Log.i("MLon",String.valueOf(mission.getLng()));
 //        Toast.makeText(getContext(), location.distanceTo(missionLocation)+"", Toast.LENGTH_SHORT).show();
-    //    long dis = (long) location.distanceTo(missionLocation);
-       // Toast.makeText(getContext(), "Distance : "+dis+"m", Toast.LENGTH_SHORT).show();
 
-        if (location.distanceTo(missionLocation) < 40000) {
+     if (BuildConfig.DEBUG) {
+         long dis = (long) location.distanceTo(missionLocation);
+         Toast.makeText(getContext(), "Distance : " + dis + "m", Toast.LENGTH_SHORT).show();
+     }
+
+        if (location.distanceTo(missionLocation) < 40) {
             nearby.setVisibility(View.GONE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
                 stopLocationUpdates();
-
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 vibrator.vibrate(VibrationEffect.createWaveform(new long[]{0, 250, 200, 250, 150, 150, 75, 150, 75, 150,150, 75, 150, 75, 150}, -1));
@@ -414,7 +415,7 @@ public class Missions
                 }
             };
             requestQueue.add(updateUser);
-        }else if (location.distanceTo(missionLocation) < 100){
+        }else if (location.distanceTo(missionLocation) < 45){
             nearby.setVisibility(View.VISIBLE);
         }else {
             nearby.setVisibility(View.GONE);

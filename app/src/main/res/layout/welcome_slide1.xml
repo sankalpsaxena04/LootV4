@@ -6,14 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageFilterView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="center"
-        android:background="@drawable/black_gradient_bg"
-        android:src="@drawable/squidgames_pos"
-        />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"

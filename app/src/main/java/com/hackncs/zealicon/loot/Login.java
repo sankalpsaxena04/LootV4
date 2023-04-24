@@ -39,6 +39,8 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import static androidx.constraintlayout.motion.widget.MotionScene.TAG;
 
@@ -114,27 +116,31 @@ public class Login extends Fragment {
         sendMail=getView().findViewById(R.id.sendmail);
 
 
-        binding.backbutton.setOnClickListener(new View.OnClickListener() {
+       binding.backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 assert getFragmentManager() != null;
-                getFragmentManager().popBackStack();
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Splash fragment = new Splash();
+                fragmentTransaction.replace(R.id.login_frame, fragment,"splash");
+                fragmentTransaction.commit();
             }
         });
 
-        sendMail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        sendMail.setOnClickListener(v -> {
+
+            if (firebaseUser != null) {
                 firebaseUser.sendEmailVerification().addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(getActivity(),
                                     "Verification Mail Sent. Please verify to continue",
                                     Toast.LENGTH_SHORT).show();
 
-                        }
-                        else{
+                        } else {
                             Log.e(TAG, "sendEmailVerification", task.getException());
                             Toast.makeText(getActivity(),
                                     "Failed to send verification email.",
@@ -143,6 +149,8 @@ public class Login extends Fragment {
                         }
                     }
                 });
+            }else {
+                Toast.makeText(requireContext(), "Enter login details first", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -6,12 +6,6 @@
     android:background="@color/black"
     tools:context="com.hackncs.zealicon.loot.Help">
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageFilterView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="center"
-        android:src="@drawable/squidgames_pos"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -24,7 +18,7 @@
         android:gravity="center"
         android:text="Help"
         android:textSize="30sp"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/dot_dark_screen1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +28,7 @@
     android:layout_marginStart="24dp"
     android:layout_marginTop="12dp"
     android:layout_marginEnd="24dp"
-    android:layout_marginBottom="12dp"
+    android:layout_marginBottom="80dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
@@ -143,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView6"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/popinmedium"
             android:text="Visit the page for hints and queries."
             android:textColor="@color/white"
@@ -157,9 +151,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/popinmedium"
-            android:text="Feel free to reach us at:\nComputer Centre AB1\nNCS"
+            android:text="Computer Centre Academic block 1,\nNCS"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </RelativeLayout>

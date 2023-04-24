@@ -9,13 +9,16 @@
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageFilterView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/gradientback"
+        android:scaleType="centerCrop"
         android:src="@drawable/squidgames_pos"
 
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout3"
@@ -29,9 +32,9 @@
             android:id="@+id/toolbar2"
             android:layout_width="match_parent"
             android:layout_height="67dp"
-            app:popupTheme="@style/ThemeOverlay.MyTheme"
             android:background="@drawable/action_bar"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            app:popupTheme="@style/ThemeOverlay.MyTheme">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,7 +50,6 @@
                     android:orientation="vertical">
 
 
-
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -59,15 +61,14 @@
                             android:id="@+id/user_coins"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/popbold"
-                            android:text="300 🪙"
-                            android:padding="6dp"
-                            android:gravity="center"
                             android:background="@drawable/white_rectangle_border_red"
+                            android:fontFamily="@font/popbold"
+                            android:gravity="center_horizontal"
+                            android:padding="6dp"
+                            android:text="0 🪙"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/darkGrey"
                             android:textSize="15sp"
-
                             android:textStyle="bold" />
 
 
@@ -75,12 +76,12 @@
                             android:id="@+id/title_board"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/popbold"
-                            android:text="Missions"
                             android:layout_marginStart="20dp"
-                            android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:background="@null"
+                            android:fontFamily="@font/popbold"
+                            android:gravity="center_vertical"
+                            android:padding="5dp"
+                            android:text="Missions"
                             android:textColor="@color/white"
                             android:textSize="20dp"
                             android:textStyle="bold" />
@@ -90,15 +91,12 @@
                             android:id="@+id/volume"
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
+                            android:background="@null"
                             android:fontFamily="@font/popbold"
-                            android:src="@drawable/ic_baseline_volume_up_24"
                             android:gravity="center"
                             android:paddingBottom="3dp"
-                            android:background="@null"
+                            android:src="@drawable/ic_baseline_volume_up_24"
                             android:textStyle="bold" />
-
-
-
 
 
                     </LinearLayout>
@@ -135,4 +133,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_item" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

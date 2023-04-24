@@ -25,10 +25,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,6 +49,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.hackncs.zealicon.loot.databinding.FragmentRegisterBinding;
 import com.orhanobut.logger.Logger;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,6 +59,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Register extends Fragment implements View.OnClickListener{
@@ -186,19 +192,23 @@ public class Register extends Fragment implements View.OnClickListener{
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         firebaseUser.delete();
-                        Logger.e("volley request : error : \\n Error message : \"+error.getMessage()+\"\\n Cause \"+error.getCause()+\"\\n\"+ Arrays.toString(error.getStackTrace())");
-                        Toast.makeText(getContext(), "Server: Error Occurred!", Toast.LENGTH_SHORT).show();
+
+                        Logger.e("volley request Error message Cause : "+error.getCause());
+                        Logger.e("volley request :"+error.getMessage());
+                        Toast.makeText(getContext(), "Server: Error -> Code: "+error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
+
+
                     }
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap();
                 map.put("reference_token", firebaseUser.getUid());
-                map.put("email", email.getText().toString());
-                map.put("name", name.getText().toString());
-                map.put("username", username.getText().toString());
-                map.put("admission_no", zeal.getText().toString());
-                map.put("contact_number", contact.getText().toString());
+                map.put("email", email.getText().toString().trim());
+                map.put("name", name.getText().toString().trim());
+                map.put("username", username.getText().toString().trim());
+                map.put("admission_no", zeal.getText().toString().trim());
+                map.put("contact_number", contact.getText().toString().trim());
                 map.put("score", "0");
                 map.put("stage", "1");
                 map.put("mission_state", "false");
@@ -212,12 +222,16 @@ public class Register extends Fragment implements View.OnClickListener{
                 if (!fcmToken.equals("")) {
                     map.put("fcm_token", fcmToken);
                 }
+
+                Logger.d("volley request map"+map);
+
                 return map;
             }
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("x-auth",Endpoints.apikey);
+
                 return params;
             }
         };
