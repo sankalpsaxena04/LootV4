@@ -11,7 +11,7 @@
         android:id="@+id/imageFilterView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/gradientback"
+        android:background="@drawable/splashback"
         android:scaleType="centerCrop"
         android:src="@drawable/squidgames_pos"
 
@@ -65,7 +65,7 @@
                             android:fontFamily="@font/popbold"
                             android:gravity="center_horizontal"
                             android:padding="6dp"
-                            android:text="0 🪙"
+                            android:text="N 🪙"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="@color/darkGrey"
                             android:textSize="15sp"

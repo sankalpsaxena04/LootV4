@@ -59,7 +59,7 @@
     </array>
     <color name="yellow500">#DD2F54</color>
     <color name="white_30">#15ffffff</color>
-
+    <color name="semi_transparent">#95000000</color>
 
 
 </resources>

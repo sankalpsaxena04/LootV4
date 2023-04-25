@@ -69,7 +69,6 @@ public class Splash extends Fragment {
     DatabaseReference users,missions;
     FirebaseUser fbuser;
     User user;
-    ProgressBar loader;
     Animation fade , blinkinf, popup;
     ArrayList<Mission> missionsList = new ArrayList<>();
     ImageView title;
@@ -111,16 +110,15 @@ public class Splash extends Fragment {
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
         missions = database.getReference("Current_missions");
-        loader=(ProgressBar)getView().findViewById(R.id.loadersplash);
         title = getView().findViewById(R.id.loot_title);
 
          fade = AnimationUtils.loadAnimation(getContext(), R.anim.fadeanim);
          blinkinf = AnimationUtils.loadAnimation(getContext(), R.anim.blink_infinite);
          popup = AnimationUtils.loadAnimation(getContext(), R.anim.popup);
          int timeout = 2000;
-        loader.setMax(timeout);
+        binding.loadersplash.setMax(timeout);
         title.setAnimation(popup);
-        loader.setAnimation(blinkinf);
+        binding.loadersplash.setAnimation(blinkinf);
 
         db  = FirebaseFirestore.getInstance();
 
@@ -131,13 +129,13 @@ public class Splash extends Fragment {
             @Override
             public void onTick(long l) {
                 //int progress=(int)((5000-l)/50);
-                loader.setProgress(timeout-(int)l);
+                binding.loadersplash.setProgress(timeout-(int)l);
             }
 
             @Override
             public void onFinish() {
-                loader.clearAnimation();
-                loader.setVisibility(View.GONE);
+                binding.loadersplash.clearAnimation();
+                binding.loadersplash.setVisibility(View.GONE);
             }
         }.start();
 
@@ -339,10 +337,7 @@ public class Splash extends Fragment {
 
     private void changeView() {
 
-        ProgressBar loader = (ProgressBar) getView().findViewById(R.id.loadersplash);
-        RelativeLayout layout = getView().findViewById(R.id.rel_layout);
-        loader.setVisibility(View.GONE);
-        layout.setVisibility(View.GONE);
+        binding.loadersplash.setVisibility(View.GONE);
         binding.loginbtn.setVisibility(View.VISIBLE);
         binding.getStartedButton.setVisibility(View.VISIBLE);
 

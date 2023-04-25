@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hackncs.zealicon.loot.OnlineUsers"
-    android:background="@color/space_transparent">
+    android:background="@drawable/black_gradient_bg">
 
 
     <androidx.recyclerview.widget.RecyclerView
