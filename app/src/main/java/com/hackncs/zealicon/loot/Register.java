@@ -1,5 +1,6 @@
 package com.hackncs.zealicon.loot;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,7 +9,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -35,6 +38,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -57,6 +61,8 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -95,9 +101,12 @@ public class Register extends Fragment implements View.OnClickListener{
         view = inflater.inflate(R.layout.fragment_register, container, false);
         binding = FragmentRegisterBinding.bind(view);
 
-
         initializeViews();
-        Logger.t("Testing logger").d(getDeviceId(Objects.requireNonNull(getActivity()).getApplicationContext()));
+        Logger.t("Testing logger device model").d(Build.MODEL);
+        Logger.t("Testing logger device company name").d(Build.BRAND);
+        Logger.t("Testing logger device company name").d(Build.PRODUCT);
+        Logger.t("Testing logger device company name").d(Build.TYPE);
+        Logger.t("Testing logger device id").d(getDeviceId(Objects.requireNonNull(getActivity()).getApplicationContext()));
         deviceID = getDeviceId(getActivity().getApplicationContext());
         return view;
     }
@@ -126,7 +135,6 @@ public class Register extends Fragment implements View.OnClickListener{
             Splash fragmet = new Splash();
             loadFragment(fragmet, "Splash");
         });
-
 
 
         //validation
@@ -199,22 +207,23 @@ public class Register extends Fragment implements View.OnClickListener{
                     public void onResponse(String response) {
                         Log.d("volley request", "response");
                         syncSharedPrefs();
+                        String emailx =  email.getText().toString().trim();
+                        String usernamex =  username.getText().toString().trim();
+                        String modelName = Build.MODEL;
+                        saveDeviceID(emailx,modelName,usernamex);
                         Toast.makeText(getContext(), "Server : You're registered successfully!", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getContext(), WelcomeSlider.class);
                         startActivity(i);
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        firebaseUser.delete();
+                error -> {
+                    firebaseUser.delete();
 
-                        Logger.e("volley request Error message Cause : "+error.getCause());
-                        Logger.e("volley request :"+error.getMessage());
-                        Toast.makeText(getContext(), "Server: Error -> Code: "+error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
+                    Logger.e("volley request Error message Cause : "+error.getCause());
+                    Logger.e("volley request :"+error.getMessage());
+                    Toast.makeText(getContext(), "Server: Error -> Code: "+error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
 
 
-                    }
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -448,6 +457,32 @@ public class Register extends Fragment implements View.OnClickListener{
     }
 
 
+
+
+    public void saveDeviceID(String email, String model , String username){
+
+
+            CollectionReference deviceIDCollectionRef = db.collection("deviceIDs");
+            String docID = deviceID;
+            DocumentReference didRef = deviceIDCollectionRef.document(docID);
+
+            Map<String, Object> deviceData = new HashMap<>();
+            deviceData.put("email", email);
+            deviceData.put("modelName", model);
+            deviceData.put("username", username);
+            deviceData.put("emailVerified", false);
+
+            didRef.set(deviceData).addOnSuccessListener(unused -> {
+                Toast.makeText(requireContext(), "Security checks OK", Toast.LENGTH_SHORT).show();
+            }).addOnFailureListener(e -> {
+                createDialog("Critical error", "Cannot register you right now, retry.");
+
+            });
+
+
+    }
+
+
     public void validateDeviceID(){
         CollectionReference deviceIDCollectionRef = db.collection("deviceIDs");
         String docID = deviceID;
@@ -463,20 +498,24 @@ public class Register extends Fragment implements View.OnClickListener{
                 String email = documentSnapshot.getString("email");
                 String modelName = documentSnapshot.getString("modelName");
                 String username = documentSnapshot.getString("username");
+                Boolean isEmailVerified = documentSnapshot.getBoolean("emailVerified");
 
-                createDialog("Account exists","Account exists with following creds :\n\nDevice model : "+modelName+" \nEmail ID : "+email+"\nUsername : "+username+"\n\nLogin using above ID to continue...").show();
+                if (Boolean.TRUE.equals(isEmailVerified)) {
+                    createDialog("Account exists", "Account exists with following creds :\n\nDevice model : " + modelName + " \nEmail ID : " + email + "\nUsername : " + username + "\n\nLogin using above ID to continue...");
+                }
+
             }else {
-                Toast.makeText(requireContext(),"Validated to create new ID", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(),"Fill in the forms", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(e->{
-            Toast.makeText(requireContext(),"Error occurred while retrieving", Toast.LENGTH_SHORT).show();
+            createDialog("Critical error", "Cannot register you right now, retry.");
 
         });
 
     }
 
 
-    public AlertDialog createDialog(String title, String message){
+    public void createDialog(String title, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle(title);
         builder.setMessage(message);
@@ -487,18 +526,12 @@ public class Register extends Fragment implements View.OnClickListener{
         })
         ;
 
+        builder.setIcon(R.drawable.baseline_lock_person_24);
         AlertDialog dialog = builder.create();
 
-        dialog.setOnShowListener( new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface arg0) {
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
-
-            }
-        });
+        dialog.setOnShowListener(arg0 -> dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED));
 
         dialog.setCancelable(false);
-
-        return dialog;
+        dialog.show();
     }
 }

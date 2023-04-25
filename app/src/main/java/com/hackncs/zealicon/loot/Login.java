@@ -1,10 +1,14 @@
 package com.hackncs.zealicon.loot;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +30,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.hackncs.zealicon.loot.databinding.FragmentLoginBinding;
 
@@ -35,6 +42,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +63,7 @@ public class Login extends Fragment {
     TextView sendMail;
     FirebaseUser firebaseUser;
     FragmentLoginBinding binding;
+    FirebaseFirestore db;
 
     public Login() {
         // Required empty public constructor
@@ -77,6 +86,9 @@ public class Login extends Fragment {
         dialog.setTitle("Please Wait");
         dialog.setCancelable(false);
         dialog.setMessage("Signing in...");
+
+        db = FirebaseFirestore.getInstance();
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,8 +100,11 @@ public class Login extends Fragment {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                                      firebaseUser = mAuth.getCurrentUser();
-                                    if(firebaseUser.isEmailVerified())
+                                    assert firebaseUser != null;
+                                    if(firebaseUser.isEmailVerified()) {
                                         syncUser(firebaseUser.getUid());
+                                        setEmailVerified();
+                                    }
                                     else {
                                         dialog.dismiss();
                                         sendMail.setVisibility(View.VISIBLE);
@@ -106,6 +121,53 @@ public class Login extends Fragment {
                         });
             }
         });
+
+    }
+
+    @SuppressLint("HardwareIds")
+    public static String getDeviceId(Context context) {
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+    }
+
+
+
+    public void setEmailVerified(){
+
+
+        CollectionReference deviceIDCollectionRef = db.collection("deviceIDs");
+        String deviceID = getDeviceId(Objects.requireNonNull(getActivity()).getApplicationContext());
+        DocumentReference didRef = deviceIDCollectionRef.document(deviceID);
+
+        Map<String,Object> deviceData = new HashMap<>();
+        deviceData.put("emailVerified", true);
+
+        didRef.update(deviceData).addOnSuccessListener(unused -> {
+            Toast.makeText(requireContext(), "Security checks OK", Toast.LENGTH_SHORT).show();
+        }).addOnFailureListener(e -> {
+            createDialog("Critical error", "Cannot log you in you right now, retry.");
+        });
+
+
+    }
+
+    public void createDialog(String title, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+
+        builder.setPositiveButton("Exit", (dialog, which) -> {
+            Objects.requireNonNull(getActivity()).finish();
+        })
+        ;
+
+        builder.setIcon(R.drawable.baseline_lock_person_24);
+        AlertDialog dialog = builder.create();
+
+        dialog.setOnShowListener(arg0 -> dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED));
+
+        dialog.setCancelable(false);
+        dialog.show();
 
     }
 
@@ -150,7 +212,7 @@ public class Login extends Fragment {
                     }
                 });
             }else {
-                Toast.makeText(requireContext(), "Enter login details first", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Enter login details then click resend mail", Toast.LENGTH_SHORT).show();
             }
         });
     }

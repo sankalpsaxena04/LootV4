@@ -94,30 +94,27 @@ public class DashboardLoot extends AppCompatActivity implements ClickCallback {
 
 
         bottomNavigationView=findViewById(R.id.bottom_nav);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id=item.getItemId();
-                switch (id)
-                {
-                    case R.id.navigation_duel:
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int id=item.getItemId();
+            switch (id)
+            {
+                case R.id.navigation_duel:
 
-                        loadFragment(fDuel,"duel");
-                        title_bar.setText(t1);
+                    loadFragment(fDuel,"duel");
+                    title_bar.setText(t1);
 
 //
-                        break;
-                    case R.id.navigation_current_mission:
-                        loadFragment(fMission,"missions");
-                        title_bar.setText(t2);
-                        break;
-                    case R.id.navigation_leaderboard:
-                        loadFragment(fLeaderboard,"leaderboard");
-                        title_bar.setText(t3);
-                        break;
-                }
-                return true;
+                    break;
+                case R.id.navigation_current_mission:
+                    loadFragment(fMission,"missions");
+                    title_bar.setText(t2);
+                    break;
+                case R.id.navigation_leaderboard:
+                    loadFragment(fLeaderboard,"leaderboard");
+                    title_bar.setText(t3);
+                    break;
             }
+            return true;
         });
 
 

@@ -370,7 +370,7 @@ public class Missions
 //     }
 
         //TODO
-        if (location.distanceTo(missionLocation) > 40) {
+        if (location.distanceTo(missionLocation) < 40) {
             nearby.setVisibility(View.GONE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

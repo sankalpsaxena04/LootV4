@@ -35,6 +35,7 @@ public class Main3Activity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         checkForUpdates(BuildConfig.VERSION_NAME);
         hideNavigationMenu();
+       // throw new RuntimeException("Test Crash"); // Force a crash
 
 
     }
