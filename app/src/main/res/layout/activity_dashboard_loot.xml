@@ -13,6 +13,7 @@
         android:id="@+id/appBarLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,7 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="63dp"
             android:background="@drawable/action_bar"
-            android:elevation="4dp"
             app:popupTheme="@style/ThemeOverlay.MyTheme">
 
 
@@ -123,14 +123,16 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="63dp"
+       android:elevation="@dimen/_5dp"
         android:layout_gravity="bottom"
         android:background="@color/colorPrimary"
         android:theme="@style/BottomNavTheme"
         app:itemIconSize="23dp"
         app:itemIconTint="@color/white"
-        app:itemTextColor="#77FFFFFF"
+        app:itemTextColor="#B5FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_item" />
 

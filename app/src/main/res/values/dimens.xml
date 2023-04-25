@@ -14,5 +14,6 @@
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="_75dp">80dp</dimen>
+    <dimen name="_5dp">8dp</dimen>
 
 </resources>

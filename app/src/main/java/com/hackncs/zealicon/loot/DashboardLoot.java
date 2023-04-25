@@ -140,7 +140,6 @@ public class DashboardLoot extends AppCompatActivity implements ClickCallback {
         BottomScreen bottomSheet = new BottomScreen();
 
         binding.optionButton.setOnClickListener(v->{
-
             bottomSheet.callback = this;
             bottomSheet.setDetails(avatarID,username,action_bar_usercoins.getText().toString());
             bottomSheet.show(getSupportFragmentManager(), "bottomsheet");

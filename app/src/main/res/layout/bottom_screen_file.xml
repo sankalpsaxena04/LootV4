@@ -38,13 +38,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
             android:background="@null"
             android:fontFamily="@font/avenir_next_lt_pro_bold"
             android:gravity="center_vertical"
             android:text="Bobby Brown"
             android:textColor="@color/black70"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -63,7 +63,7 @@
             android:gravity="center_vertical"
             android:text="Score : 2000"
             android:textColor="@color/colorPrimary"
-            android:textSize="15dp"
+            android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -83,10 +83,11 @@
 
     <TextView
         android:id="@+id/aboutTV"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:background="@null"
+        android:layout_marginStart="@dimen/_5dp"
         android:fontFamily="@font/popinsemibold"
         android:gravity="center_vertical"
         android:text="About"
@@ -99,9 +100,11 @@
 
     <TextView
         android:id="@+id/storyTV"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/_5dp"
+
         android:background="@null"
         android:fontFamily="@font/popinsemibold"
         android:gravity="center_vertical"
@@ -115,9 +118,11 @@
 
     <TextView
         android:id="@+id/helpTV"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/_5dp"
+
         android:background="@null"
         android:fontFamily="@font/popinsemibold"
         android:gravity="center_vertical"
@@ -131,10 +136,12 @@
 
     <TextView
         android:id="@+id/howtoPlayTV"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@null"
+        android:layout_marginStart="@dimen/_5dp"
+
         android:fontFamily="@font/popinsemibold"
         android:gravity="center_vertical"
         android:text="How to play"
@@ -147,11 +154,12 @@
 
     <TextView
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
         android:id="@+id/logOutTV"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="@dimen/_5dp"
         android:fontFamily="@font/popinsemibold"
         android:gravity="center_vertical"
         android:text="Log out"

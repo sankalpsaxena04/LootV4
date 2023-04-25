@@ -66,6 +66,7 @@ import org.json.JSONObject;
 
 public class Register extends Fragment implements View.OnClickListener{
 
+    //region Initializations
     private final String TAG = this.getClass().getSimpleName();
     private FirebaseAuth mAuth;
     View view;
@@ -81,6 +82,9 @@ public class Register extends Fragment implements View.OnClickListener{
     User user;
     FragmentRegisterBinding binding;
     String deviceID;
+
+    //endregion
+
     public Register() {
         // Required empty public constructor
     }
@@ -95,7 +99,6 @@ public class Register extends Fragment implements View.OnClickListener{
         initializeViews();
         Logger.t("Testing logger").d(getDeviceId(Objects.requireNonNull(getActivity()).getApplicationContext()));
         deviceID = getDeviceId(getActivity().getApplicationContext());
-      //  validateDeviceID();
         return view;
     }
 
@@ -126,7 +129,11 @@ public class Register extends Fragment implements View.OnClickListener{
 
 
 
-       //region Register button
+        //validation
+        validateDeviceID();
+
+
+        //region Register button
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -445,7 +452,6 @@ public class Register extends Fragment implements View.OnClickListener{
         CollectionReference deviceIDCollectionRef = db.collection("deviceIDs");
         String docID = deviceID;
 
-
         Logger.d(docID);
         DocumentReference didRef = deviceIDCollectionRef.document(docID);
 
@@ -460,7 +466,7 @@ public class Register extends Fragment implements View.OnClickListener{
 
                 createDialog("Account exists","Account exists with following creds :\n\nDevice model : "+modelName+" \nEmail ID : "+email+"\nUsername : "+username+"\n\nLogin using above ID to continue...").show();
             }else {
-                Toast.makeText(requireContext(),"Validated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(),"Validated to create new ID", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(e->{
             Toast.makeText(requireContext(),"Error occurred while retrieving", Toast.LENGTH_SHORT).show();

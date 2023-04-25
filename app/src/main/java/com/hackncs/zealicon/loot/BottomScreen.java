@@ -44,6 +44,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.hackncs.zealicon.loot.databinding.BottomScreenFileBinding;
 
@@ -67,6 +68,11 @@ public class BottomScreen extends BottomSheetDialogFragment {
 
 
     @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = BottomScreenFileBinding.inflate(inflater,container,false);
@@ -76,6 +82,9 @@ public class BottomScreen extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+
 
         binding.avatarImg.setImageResource(avatarID);
         binding.playername.setText(name);
