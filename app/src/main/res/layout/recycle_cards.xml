@@ -5,72 +5,60 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="10dp"
-    android:layout_marginTop="5dp"
+    card_view:cardCornerRadius="15dp"
+    android:layout_marginTop="10dp"
     card_view:cardElevation="5dp"
-    card_view:cardBackgroundColor="#D3424242"
-   >
+
+    card_view:cardBackgroundColor="#424242"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="84dp"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:weightSum="10"
+        android:background="@drawable/pink_rectangle">
 
-
-        <TextView
-            android:id="@+id/rank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="10dp"
-            android:elevation="5dp"
-            android:fontFamily="@font/popbold"
-            android:text="200"
-            android:paddingTop="5dp"
-            android:textColor="#FFE082"
-            android:textSize="25sp" />
 
         <ImageView
             android:id="@+id/avatar"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="20dp"
             android:layout_marginLeft="10dp"
             android:scaleType="fitXY"
-            android:src="@drawable/card_background_yellow"
+            android:src="@drawable/avatar_2"
+            android:layout_weight="1.7"
             android:tag="image_tag" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="13dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="0dp"
-            android:layout_weight="1"
             android:orientation="vertical"
-            android:paddingEnd="8dp"
-            android:paddingRight="8dp">
+            android:gravity="center_vertical|top"
+            android:paddingTop="10dp"
+            android:layout_weight="7"
+        >
 
             <TextView
                 android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/popbold"
-                android:gravity="center"
-                android:text="Misaki"
+                android:fontFamily="@font/avenir_next_lt_pro_demi"
+                android:text="Bobby Browofwpeofkwwefwefwwefwpeoijoijoijoijowepokwpeofkweweofpkn"
                 android:textColor="@color/white30"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp">
-
+                android:maxLength="20"
+                android:singleLine="false"
+                android:textAlignment="textStart"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="20dp" />
 
 
                 <TextView
@@ -78,39 +66,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/bahnschrift_reg"
-                    android:text="1000"
-                    android:layout_marginStart="5dp"
+                    android:text="0"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
                     android:textColor="#DCEDC8"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/dollar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/bahnschrift_reg"
-                    android:text="$"
-                    android:textColor="#DCEDC8"
 
-                    android:textSize="18sp" />
 
-            </LinearLayout>
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/medal"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="15dp"
-            android:visibility="visible"
-            android:fontFamily="@font/popbold"
-            android:src="@drawable/leader"
-            android:tint="#FFE082"
-            android:paddingTop="5dp"
-            android:textSize="25sp" />
+        <TextView
+            android:id="@+id/rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/avenir_next_lt_pro_demi"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white30"
+            android:textSize="36sp" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
-

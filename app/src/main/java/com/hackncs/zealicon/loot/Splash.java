@@ -8,11 +8,13 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.BoringLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,6 +76,7 @@ public class Splash extends Fragment {
     ImageView title;
     boolean isConnected, logged_in, synced_user, synced_missions, isVerified;
     FragmentSplashBinding binding;
+    CountDownTimer countDownTimer;
 
     public Splash() {
         // Required empty public constructor
@@ -115,17 +118,14 @@ public class Splash extends Fragment {
          fade = AnimationUtils.loadAnimation(getContext(), R.anim.fadeanim);
          blinkinf = AnimationUtils.loadAnimation(getContext(), R.anim.blink_infinite);
          popup = AnimationUtils.loadAnimation(getContext(), R.anim.popup);
-         int timeout = 2000;
+         int timeout = 2500;
         binding.loadersplash.setMax(timeout);
         title.setAnimation(popup);
         binding.loadersplash.setAnimation(blinkinf);
 
         db  = FirebaseFirestore.getInstance();
 
-        if (!isEmulator()){
-
-        //blink.start();
-        new CountDownTimer(timeout+100, 1) {
+        countDownTimer =  new CountDownTimer(timeout+100, 1) {
             @Override
             public void onTick(long l) {
                 //int progress=(int)((5000-l)/50);
@@ -137,7 +137,15 @@ public class Splash extends Fragment {
                 binding.loadersplash.clearAnimation();
                 binding.loadersplash.setVisibility(View.GONE);
             }
-        }.start();
+        };
+
+
+        //TODO REMOVE ISEMULATOR CHECK
+        if (!isEmulator()){
+
+        //blink.start();
+            countDownTimer.start();
+
 
         new BackgroundTasks().execute();
         new Handler().postDelayed(new Runnable() {
@@ -158,12 +166,15 @@ public class Splash extends Fragment {
             }
         }, timeout);
         }else {
-
+            countDownTimer.cancel();
             createDialog("Emulator detected", "Loot cannot run on emulator for security reasons", true).show();
 
         }
 
     }
+
+
+
 
 
     public AlertDialog createDialog(String title, String message, Boolean isCancellable){

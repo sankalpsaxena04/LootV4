@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/black_gradient_bg"
+    android:background="@drawable/green_gradient_bg"
     tools:context="com.hackncs.zealicon.loot.Duel">
 
 
@@ -96,21 +96,22 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/white_background70"
 
+        android:background="@drawable/white_background70"
         android:fadeScrollbars="false"
         android:padding="15dp"
         android:scrollbarThumbVertical="@drawable/white_rectangle"
         android:verticalScrollbarPosition="right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.38"
 
+        app:layout_constraintHeight_percent="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintWidth_default="percent"
@@ -151,20 +152,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/popinsemibold"
         android:text="Ready To Loot?"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/loot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+        app:layout_constraintVertical_bias="0.947" />
 
     <Button
         android:id="@+id/loot"
         android:layout_width="129dp"
         android:layout_height="51dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/card_background_yellow"
         android:fontFamily="@font/popbold"
@@ -172,9 +175,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dan_msg"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

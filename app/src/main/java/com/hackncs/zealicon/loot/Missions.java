@@ -364,12 +364,13 @@ public class Missions
         Log.i("MLon",String.valueOf(mission.getLng()));
 //        Toast.makeText(getContext(), location.distanceTo(missionLocation)+"", Toast.LENGTH_SHORT).show();
 
-     if (BuildConfig.DEBUG) {
-         long dis = (long) location.distanceTo(missionLocation);
-         Toast.makeText(getContext(), "Distance : " + dis + "m", Toast.LENGTH_SHORT).show();
-     }
+//     if (BuildConfig.DEBUG) {
+//         long dis = (long) location.distanceTo(missionLocation);
+//         Toast.makeText(getContext(), "Distance : " + dis + "m", Toast.LENGTH_SHORT).show();
+//     }
 
-        if (location.distanceTo(missionLocation) < 40) {
+        //TODO
+        if (location.distanceTo(missionLocation) > 40) {
             nearby.setVisibility(View.GONE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

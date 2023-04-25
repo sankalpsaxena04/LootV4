@@ -7,12 +7,9 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,9 +26,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.hackncs.zealicon.loot.databinding.ActivityDashboardLootBinding;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -40,7 +39,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class DashboardLoot extends AppCompatActivity {
+public class DashboardLoot extends AppCompatActivity implements ClickCallback {
 
 
     BottomNavigationView bottomNavigationView;
@@ -52,15 +51,20 @@ public class DashboardLoot extends AppCompatActivity {
     final static String t1 = "DUEL", t2 = "Missions", t3 = "Leaderboard";
     Fragment fDuel , fMission , fLeaderboard;
     boolean mute = false;
+    ActivityDashboardLootBinding binding;
+    int score, avatarID;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard_loot);
+        hideNavigationMenu();
+        binding = ActivityDashboardLootBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar2);
 
         vol = findViewById(R.id.volume);
-        title_bar = findViewById(R.id.title_board);
+        title_bar = findViewById(R.id.playername);
         db= FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         setSupportActionBar(toolbar);
@@ -69,19 +73,17 @@ public class DashboardLoot extends AppCompatActivity {
         fLeaderboard = new LeaderBoard();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        TextView action_bar_username=findViewById(R.id.user_name);
+      //  TextView action_bar_username=findViewById(R.id.user_name);
         action_bar_usercoins=findViewById(R.id.user_coins);
-        ImageView action_bar_useravatar=findViewById(R.id.avatar);
+       // ImageView action_bar_useravatar=findViewById(R.id.avatar);
 
         SharedPreferences  sharedPreferences = getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);
-        int score = sharedPreferences.getInt("com.hackncs.score", 0);
-        String username= sharedPreferences.getString("com.hackncs.username", null);
-//        int avatarID = sharedPreferences.getInt("com.hackncs.avatarID", R.drawable.avatar_1);
+         score = sharedPreferences.getInt("com.hackncs.score", 0);
+         username= sharedPreferences.getString("com.hackncs.username", null);
+         avatarID = sharedPreferences.getInt("com.hackncs.avatarID", R.drawable.avatar_1);
 //        action_bar_useravatar.setImageResource(avatarID);
 //        action_bar_username.setText(username);
 //        action_bar_usercoins.setText(score+"");
-
 
         mediaPlayer = MediaPlayer.create(this, R.raw.bgmusicsg);
 
@@ -119,22 +121,30 @@ public class DashboardLoot extends AppCompatActivity {
         });
 
 
-        vol.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!mute){
-                   // stopPlaying();
-                    mediaPlayer.setVolume(0,0);
-                    vol.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24));
-                    mute = true;
-                }else {
-                  //  mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bgmusicsg);
-                  //  mediaPlayer.start();
-                    mediaPlayer.setVolume(1,1);
-                    vol.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_up_24));
-                    mute = false;
-                }
+        vol.setOnClickListener(view -> {
+            if (!mute){
+               // stopPlaying();
+                mediaPlayer.setVolume(0,0);
+                vol.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_off_24));
+                mute = true;
+            }else {
+              //  mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bgmusicsg);
+              //  mediaPlayer.start();
+                mediaPlayer.setVolume(1,1);
+                vol.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_volume_up_24));
+                mute = false;
             }
+        });
+
+
+        BottomScreen bottomSheet = new BottomScreen();
+
+        binding.optionButton.setOnClickListener(v->{
+
+            bottomSheet.callback = this;
+            bottomSheet.setDetails(avatarID,username,action_bar_usercoins.getText().toString());
+            bottomSheet.show(getSupportFragmentManager(), "bottomsheet");
+
         });
 
 
@@ -148,6 +158,16 @@ public class DashboardLoot extends AppCompatActivity {
            // mediaPlayer = null;
         }
         }
+
+
+    void hideNavigationMenu(){
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        decorView.setSystemUiVisibility(uiOptions);
+    }
+
+
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -158,7 +178,7 @@ public class DashboardLoot extends AppCompatActivity {
 //            Log.i("Resume","Resume1"+mediaPlayer.isPlaying());
             SharedPreferences sharedPreferences = getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);
             int score = sharedPreferences.getInt("com.hackncs.score", 0);
-            action_bar_usercoins.setText(" "+score+" \uD83E\uDE99");
+            action_bar_usercoins.setText(" "+score);
             userOnlineUpdate(mAuth.getCurrentUser().getUid(),false);
             updateFirebase(mAuth.getCurrentUser(), true);
             bottomNavigationView.getMenu().getItem(1).setChecked(true);
@@ -238,14 +258,12 @@ public class DashboardLoot extends AppCompatActivity {
 //        }
 //    }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onStop() {
         super.onStop();
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onPause() {
 
@@ -260,42 +278,45 @@ public class DashboardLoot extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.popup_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case R.id.item_howTo:
-                loadFragment(new HowTo(),"how_to");
-//                Intent i1 = new Intent(this, MiniGame.class);
-//                i1.putExtra("duel_id","nknfknskfdsf" );
-//                i1.putExtra("player_type", "challenger");
-//                startActivity(i1);
-                break;
-            case R.id.item_about:
-                loadFragment(new AboutFragment(),"about");
-                break;
-            case R.id.item_story:
-                Intent i = new Intent(this, WelcomeSlider.class);
-                startActivity(i);
-                break;
-            case R.id.item_help:
-                loadFragment(new Help(),"help");
-                break;
-            case R.id.pop_logout:
-                updateFirebase(mAuth.getCurrentUser(),false);
-                mAuth.signOut();
-                Intent intent=new Intent(getApplicationContext(), Main3Activity.class);
-                startActivity(intent);
-                break;
-            default:
-        }
-        return super.onOptionsItemSelected(menuItem);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.popup_menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem menuItem) {
+//        switch (menuItem.getItemId()) {
+//            case R.id.item_howTo:
+//                loadFragment(new HowTo(),"how_to");
+////                Intent i1 = new Intent(this, MiniGame.class);
+////                i1.putExtra("duel_id","nknfknskfdsf" );
+////                i1.putExtra("player_type", "challenger");
+////                startActivity(i1);
+//                break;
+//            case R.id.item_about:
+//                loadFragment(new AboutFragment(),"about");
+//                break;
+//            case R.id.item_story:
+//                Intent i = new Intent(this, WelcomeSlider.class);
+//                startActivity(i);
+//                break;
+//            case R.id.item_help:
+//                loadFragment(new Help(),"help");
+//                break;
+//            case R.id.pop_logout:
+//                updateFirebase(mAuth.getCurrentUser(),false);
+//                mAuth.signOut();
+//                Intent intent=new Intent(getApplicationContext(), Main3Activity.class);
+//                startActivity(intent);
+//                break;
+//            default:
+//        }
+//        return super.onOptionsItemSelected(menuItem);
+//    }
+//
+
+
     public void updateFirebase(FirebaseUser firebaseUser,boolean state)
     {
         Map<String, Object> user = new HashMap<>();
@@ -353,5 +374,34 @@ public class DashboardLoot extends AppCompatActivity {
             }
         };
         requestQueue.add(updateUser);
+    }
+
+    @Override
+    public void onClick(int pos) {
+         switch (pos){
+
+             case 3:
+                loadFragment(new HowTo(),"how_to");
+                break;
+            case 0:
+                loadFragment(new AboutFragment(),"about");
+                break;
+            case 1:
+                Intent i = new Intent(this, WelcomeSlider.class);
+                startActivity(i);
+                break;
+            case 2:
+                loadFragment(new Help(),"help");
+                break;
+            case 4:
+                updateFirebase(Objects.requireNonNull(mAuth.getCurrentUser()),false);
+                mAuth.signOut();
+                Intent intent=new Intent(getApplicationContext(), Main3Activity.class);
+                startActivity(intent);
+                break;
+
+             default :
+
+         }
     }
 }

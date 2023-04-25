@@ -44,14 +44,14 @@ public class CustomRecycleAdapter extends RecyclerView.Adapter<CustomRecycleAdap
     private Activity mActivity;
     private ArrayList<User> users;
     private String key;
-    Activity activity;
     String fcm = "";
     APIService fcmService;
     public int rank = 0;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, coins, rank;
-        public ImageView avatar, medal;
+        public ImageView avatar;
+        //public ImageView  medal;
         public CardView cardView;
 
         public MyViewHolder(View view) {
@@ -61,7 +61,7 @@ public class CustomRecycleAdapter extends RecyclerView.Adapter<CustomRecycleAdap
             avatar = (ImageView) view.findViewById(R.id.avatar);
             rank = (TextView) view.findViewById(R.id.rank);
             cardView=view.findViewById(R.id.card_view);
-            medal = (ImageView) view.findViewById(R.id.medal);
+          //  medal = (ImageView) view.findViewById(R.id.medal);
         }
     }
 
@@ -90,12 +90,12 @@ public class CustomRecycleAdapter extends RecyclerView.Adapter<CustomRecycleAdap
 
         rank++;
 
-        if (rank==1) {
-            // leader.setVisibility(View.VISIBLE);
-            holder.medal.setVisibility(View.VISIBLE);
-        }else{
-            holder.medal.setVisibility(View.GONE);
-        }
+//        if (rank==1) {
+//            // leader.setVisibility(View.VISIBLE);
+//          //  holder.medal.setVisibility(View.VISIBLE);
+//        }else{
+//          //  holder.medal.setVisibility(View.GONE);
+//        }
 //      Log.i("username",users.get(position).getUsername());
         holder.name.setText(user.getUsername());
         holder.coins.setText(""+user.getScore());

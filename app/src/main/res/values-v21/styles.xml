@@ -4,7 +4,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@color/NavigationColor</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:actionOverflowButtonStyle">@style/Overflow</item>
 
     </style>

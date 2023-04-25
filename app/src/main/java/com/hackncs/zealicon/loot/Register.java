@@ -58,6 +58,7 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -116,6 +117,14 @@ public class Register extends Fragment implements View.OnClickListener{
         dialog.setCancelable(false);
         dialog.setMessage("Registering you...");
         final Animation blinkAnim = AnimationUtils.loadAnimation(getContext(), R.anim.blink) ;
+
+        binding.backbutton.setOnClickListener(view -> {
+
+            Splash fragmet = new Splash();
+            loadFragment(fragmet, "Splash");
+        });
+
+
 
        //region Register button
         register.setOnClickListener(new View.OnClickListener() {
@@ -346,6 +355,15 @@ public class Register extends Fragment implements View.OnClickListener{
         });
 
     }
+
+    private void loadFragment(Fragment fragment, String tag) {
+        // load fragment
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.login_frame, fragment,tag);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 
     @Override
     public void onClick(View view) {
