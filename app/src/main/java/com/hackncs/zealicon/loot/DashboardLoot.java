@@ -153,7 +153,7 @@ public class DashboardLoot extends AppCompatActivity implements ClickCallback {
             mediaPlayer.release();
            // mediaPlayer = null;
         }
-        }
+    }
 
 
     void hideNavigationMenu(){

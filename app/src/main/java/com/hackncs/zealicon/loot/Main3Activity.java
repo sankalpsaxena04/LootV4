@@ -33,10 +33,11 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         db = FirebaseFirestore.getInstance();
-        checkForUpdates(BuildConfig.VERSION_NAME);
+//        checkForUpdates(BuildConfig.VERSION_NAME);
         hideNavigationMenu();
        // throw new RuntimeException("Test Crash"); // Force a crash
-
+        Fragment fragment=new Splash();
+        loadFragment(fragment,"splash");
 
     }
 

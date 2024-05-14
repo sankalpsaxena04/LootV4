@@ -141,12 +141,33 @@ public class Splash extends Fragment {
 
 
         //TODO REMOVE ISEMULATOR CHECK
-        if (!isEmulator()){
-
-        //blink.start();
-            countDownTimer.start();
-
-
+//        if (!isEmulator()){
+//            //blink.start();
+//            countDownTimer.start();
+//            new BackgroundTasks().execute();
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    if (isConnected) {
+//                        if (logged_in) {
+//                            syncSharedPrefs(user);
+//                        }
+//                        else {
+//                            changeView();
+//                        }
+//                    }
+//                    else {
+//                        Toast.makeText(getActivity(),"You're not connected!",Toast.LENGTH_SHORT).show();
+//                        Objects.requireNonNull(getActivity()).finish();
+//                    }
+//                }
+//            }, timeout);
+//        }else {
+//            countDownTimer.cancel();
+//            createDialog("Emulator detected", "Loot cannot run on emulator for security reasons", true).show();
+//
+//        }
+        countDownTimer.start();
         new BackgroundTasks().execute();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -165,11 +186,6 @@ public class Splash extends Fragment {
                 }
             }
         }, timeout);
-        }else {
-            countDownTimer.cancel();
-            createDialog("Emulator detected", "Loot cannot run on emulator for security reasons", true).show();
-
-        }
 
     }
 
@@ -347,6 +363,7 @@ public class Splash extends Fragment {
     }
 
     private void changeView() {
+
 
         binding.loadersplash.setVisibility(View.GONE);
         binding.loginbtn.setVisibility(View.VISIBLE);
