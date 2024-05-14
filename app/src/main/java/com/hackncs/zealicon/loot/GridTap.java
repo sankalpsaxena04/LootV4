@@ -166,12 +166,13 @@ public class GridTap extends Fragment implements View.OnClickListener {
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(getContext(), "Error"+ error.getMessage() , Toast.LENGTH_SHORT).show();;
                         }
-                    }){
+                    })
+            {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map map = new HashMap();
-//                    if (args.get("player_type").equals("challenger")) {
-//                    Log.i("Player_type",getActivity().getIntent().getStringExtra("player_type"));
+                    //                    if (args.get("player_type").equals("challenger")) {
+                    //                    Log.i("Player_type",getActivity().getIntent().getStringExtra("player_type"));
                     if (getActivity().getIntent().getStringExtra("player_type").equals("challenger")) {
                         map.put("challenger_tap_count", String.valueOf(counter));
                     } else {

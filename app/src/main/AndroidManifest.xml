@@ -51,7 +51,11 @@
         <activity
             android:name="com.hackncs.zealicon.loot.WelcomeSlider"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+
+
+        </activity>
         <activity
             android:name="com.hackncs.zealicon.loot.DashboardLoot"
             android:windowSoftInputMode="adjustPan"

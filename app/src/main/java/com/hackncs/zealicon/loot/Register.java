@@ -153,38 +153,35 @@ public class Register extends Fragment implements View.OnClickListener{
                 }else {
                         dialog.show();
                         mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()) {
-                                            dialog.dismiss();
-                                            firebaseUser = mAuth.getCurrentUser();
-                                            assert firebaseUser != null;
-                                            firebaseUser.sendEmailVerification().addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if(task.isSuccessful()){
-                                                        Toast.makeText(getActivity(),
-                                                                "Verification Mail Sent. Please verify to continue",
-                                                                Toast.LENGTH_SHORT).show();
-                                                        createUser();
-                                                    }
-                                                    else{
-                                                        firebaseUser.delete();
-                                                        Log.e(TAG, "sendEmailVerification", task.getException());
-                                                        Toast.makeText(getActivity(),
-                                                                "Failed to send verification email.Invalid Email. Try Again",
-                                                                Toast.LENGTH_SHORT).show();
-                                                    }
+                                .addOnCompleteListener(requireActivity(), task -> {
+                                    if (task.isSuccessful()) {
+                                        dialog.dismiss();
+                                        firebaseUser = mAuth.getCurrentUser();
+                                        assert firebaseUser != null;
+                                        firebaseUser.sendEmailVerification().addOnCompleteListener(requireActivity(), new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    Toast.makeText(getActivity(),
+                                                            "Verification Mail Sent. Please verify to continue",
+                                                            Toast.LENGTH_SHORT).show();
+                                                    createUser();
                                                 }
-                                            });
+                                                else{
+                                                    firebaseUser.delete();
+                                                    Log.e(TAG, "sendEmailVerification", task.getException());
+                                                    Toast.makeText(getActivity(),
+                                                            "Failed to send verification email.Invalid Email. Try Again",
+                                                            Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
 
-                                        } else {
-                                            dialog.dismiss();
-                                            Toast.makeText(getContext(), "Firebase : Registration failed." + task.getException().getMessage(),
-                                                    Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        dialog.dismiss();
+                                        Toast.makeText(getContext(), "Firebase : Registration failed." + task.getException().getMessage(),
+                                                Toast.LENGTH_SHORT).show();
 
-                                        }
                                     }
                                 });
 
@@ -221,6 +218,8 @@ public class Register extends Fragment implements View.OnClickListener{
 
                     Logger.e("volley request Error message Cause : "+error.getCause());
                     Logger.e("volley request :"+error.getMessage());
+                    Logger.e("network response :"+error.networkResponse);
+
                     Toast.makeText(getContext(), "Server: Error -> Code: "+error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
 
 
@@ -508,8 +507,7 @@ public class Register extends Fragment implements View.OnClickListener{
                 Toast.makeText(requireContext(),"Fill in the forms", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(e->{
-            createDialog("Critical error", "Cannot register you right now, retry.");
-
+//            createDialog("Critical error", "Cannot register you right now, retry.");
         });
 
     }

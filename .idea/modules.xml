@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Loot-2022-Final.iml" filepath="$PROJECT_DIR$/.idea/modules/Loot-2022-Final.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Loot-2022-Final.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Loot-2022-Final.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Loot-2022-Final.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Loot-2022-Final.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Loot-2022-Final.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Loot-2022-Final.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Loot-2022-Final.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Loot-2022-Final.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LootV5.iml" filepath="$PROJECT_DIR$/.idea/modules/LootV5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LootV5.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LootV5.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LootV5.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LootV5.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LootV5.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LootV5.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LootV5.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LootV5.app.unitTest.iml" />
     </modules>
   </component>
 </project>

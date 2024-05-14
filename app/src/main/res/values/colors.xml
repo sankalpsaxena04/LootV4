@@ -4,6 +4,12 @@
     <color name="colorPrimary">#ED1A77</color>
     <color name="colorPrimaryDark">#ED1A77</color>
     <color name="colorAccent">#90ffffff</color>
+    
+    <color name="primary_bg">#FFFBF5</color>
+    <color name="primary">#D15704</color>
+    <color name="accent">#FF5400</color>
+    <color name="better_black">#1E1E1E</color>
+    <color name="hint_color">#666666</color>
 
     <color name="black">#000000</color>
     <color name="lootblackbg">#191919</color>
