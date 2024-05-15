@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/primary_bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AboutFragment">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/squidgames_pos" />
+        android:src="@drawable/bg_image" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -21,7 +21,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/white_background70"
+        android:background="@drawable/card_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,11 +34,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
-            android:fontFamily="@font/popbold"
+            android:fontFamily="@font/opensans_bold"
             android:gravity="center"
             android:text="About"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp"
+            android:textColor="@color/better_black"
+            android:textSize="27sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,16 +54,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/popinmedium"
-                android:text="@string/about"
-                android:textAlignment="center"
-                android:lineSpacingExtra="4dp"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/desc"
+                    android:layout_marginTop="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensans_medium"
+                    android:text="@string/about"
+                    android:textAlignment="center"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="#404040"
+                    android:textSize="16sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ncs_hallmark"
+                    android:fontFamily="@font/opensans_bold"
+                    android:textColor="@color/better_black"
+                    android:layout_below="@id/desc"
+                    android:textAlignment="center"
+                    android:textSize="18.dp"
+                    android:layout_marginTop="48.dp"
+                    />
+            </RelativeLayout>
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

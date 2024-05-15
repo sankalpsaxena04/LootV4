@@ -50,15 +50,20 @@
     Ace it or perish!
     Deal? It's the only way out.
 
-    <string name="intro">Hello Player 426,
-    So you are under heavy debts and you’ve lost all your savings to gamble.
-    We present you a great deal with a high risk competition that has extraordinary stakes to improve your situation.
-    You are invited to be a part of the most exhilarating event, loot.
-    It’s either a lot to win or a lot to lose.
-    Inside, a tempting prize awaits with deadly high stakes.
-    So, here’s what you have to do, . . .</string>
+    <string name="intro">In the vast desert of Arrakis, where sandstorms rage and giant sandworms roam, there lived a solitary figure named Paul. He was a nomad, a wanderer, traversing the dunes with only his instincts as his guide. Paul's ancestors had once been rulers of Arrakis, but now their empire lay in ruins, lost to the sands of time.</string>
     <string name="intro3">Missions will be given to the players on reaching certain checkpoints inside the campus.\n\nA riddle is to be asked in reference to the place. \nThe players can always skip a riddle to move to next checkpoint but it would result in losing of points.</string>
-    <string name="about">© Nibble Computer Society \n\nZealicon’23 brings to you the third edition and first-of-its-kind event, LOOT. Now put on your thinking caps and go about the campus with your GPS up and running, complete thrilling missions and solve mind-boggling puzzles, all with one Android application at your palm. We challenge you to keep up with us!! Get ready to get bamboozled!!!!</string>
-    <string name="how_to">Turn on your phone\'s GPS if it\'s off. For every mission, first reach location by decoding the provided information. Every time you reach a correct location, your phone will vibrate and you will be given a puzzle. Solve it to earn coins and be taken to the next mission! You can drop the mission if you wish to. However, keep in mind that there will be penalty for every mission dropped. Between an ongoing mission, you can also challenge any other online player for a duel in a mini game by placing a bet of coins of your choice. Your opponent can either accept or reject your challenge. If he/she chooses to accept, they also get to choose a bet of the equal number or coins as you, or less. The lesser number of coins will be the final bet placed. Your number of coins will decide your rank on the leaderboard. At the end of 2 days of the event going live, the top players on the leaderboard will be declared winners. Happy looting!</string>
-    <string name="intro_page2">. . . You have to ace the maze before any other player reaches, climb the leaderboard. Remember, there is only one who will win and rest all will perish. Quitters won’t see what remains next in their life. Cheaters will not see the next day. It’s a Win or None. Ace it or perish! Deal? It\'s the only way out.. Guess the location</string>
+    <string name="about">Embark on an epic adventure with Zealicon'24 as we present the 5th edition of LOOT, Get ready to dive into an adrenaline-fueled experience like never before. With your GPS as your guide, navigate through a virtual desert landscape, encountering unexpected challenges and solving mind-bending puzzles along the way. Prepare yourself for an adventure that will push your limits and leave you craving for more. Get set to be enthralled!</string>
+    <string name="ncs_hallmark">© Nibble Computer Society</string>
+    <string name="how_to">Turn on your phone GPS if it’s off. For every mission, first reach the location by decoding the provided information.\n\n
+    Every time you reach a correct location , your phone will vibrate and you will be given a puzzle. solve itto earn coins and be taken to the next mission if you wish to. However, keep in mind that there will be penalty for every mission dropped.\n\n
+    Your number of coins will decide your rank on the leaderboard. At the end od 2 days of the event going live , the top player on the leaderboard will be decleared winners. Happy looting!! </string>
+    <string name="intro_page2">One fateful day, Paul stumbled upon an ancient artifact buried beneath the shifting sands. It was a map, etched onto a piece of weathered parchment, depicting hidden chambers and secret passages beneath the desert. Intrigued by the discovery, Paul realized that this map held the key to untold riches, hidden deep within the heart of Arrakis.
+But Paul was not alone in his quest. The treacherous Baron Harkonnen, ruler of Arrakis, had caught wind of Paul's discovery and coveted the treasure for himself. Determined to claim it at any cost, the Baron dispatched his minions to hunt down Paul and seize the map.</string>
+    <string name="intro_page3">As Paul journeyed deeper into the desert, he faced perilous challenges at every turn. Sandstorms threatened to engulf him, and deadly traps lay in wait within the ancient ruins. But Paul pressed on, driven by the promise of wealth beyond imagination.
+Along the way, Paul encountered allies who aided him in his quest. A fierce warrior named Stilgar, leader of the desert tribes, pledged his loyalty to Paul's cause. Together, they faced off against the Baron's forces in a thrilling showdown amidst the dunes.</string>
+    <string name="intro_page4">Mission Will be given to the player on the reaching certain checkpoints within the given map.
+
+A riddle is to be asked in referenced the place.
+
+    The player can always skip a riddle to move to next Checkpoint but it would result in\n<b> LOOSING THE POINTS</b>!!</string>
 </resources>

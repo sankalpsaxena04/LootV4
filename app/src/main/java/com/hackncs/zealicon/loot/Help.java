@@ -32,7 +32,7 @@ public class Help extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Button anuragContact=getView().findViewById(R.id.anuragContact);
         Button alokContact=getView().findViewById(R.id.alokContact);
-        final TextView facebook=getView().findViewById(R.id.textView6);
+//        final TextView facebook=getView().findViewById(R.id.textView6);
         final TextView anurag=getView().findViewById(R.id.textView2);
         final TextView alok=getView().findViewById(R.id.textView4);
         anuragContact.setOnClickListener(new View.OnClickListener() {
@@ -59,24 +59,24 @@ public class Help extends Fragment {
                 dialPhoneNumber("8887358051");
             }
         });
-        facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
-                    String facebookUrl = getFacebookPageURL(getActivity());
-                    facebookIntent.setData(Uri.parse(facebookUrl));
-                    startActivity(facebookIntent);
-                }
-                catch (Exception e){
-                    String FACEBOOK_URL = "https://www.facebook.com/LootZealicon";
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(FACEBOOK_URL));
-                    startActivity(i);
-                }
-
-            }
-        });
+//        facebook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                try {
+//                    Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
+//                    String facebookUrl = getFacebookPageURL(getActivity());
+//                    facebookIntent.setData(Uri.parse(facebookUrl));
+//                    startActivity(facebookIntent);
+//                }
+//                catch (Exception e){
+//                    String FACEBOOK_URL = "https://www.facebook.com/LootZealicon";
+//                    Intent i = new Intent(Intent.ACTION_VIEW);
+//                    i.setData(Uri.parse(FACEBOOK_URL));
+//                    startActivity(i);
+//                }
+//
+//            }
+//        });
     }
 
     public void dialPhoneNumber(String phoneNumber) {
@@ -86,20 +86,20 @@ public class Help extends Fragment {
             startActivity(intent);
         }
     }
-    public String getFacebookPageURL(Context context) {
-         String FACEBOOK_URL = "https://www.facebook.com/LootZealicon";
-         String FACEBOOK_PAGE_ID = "LootZealicon";
-        PackageManager packageManager = context.getPackageManager();
-        try {
-            int versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode;
-            if (versionCode >= 3002850) { //newer versions of fb app
-                return "fb://facewebmodal/f?href=" + FACEBOOK_URL;
-            } else { //older versions of fb app
-                return "fb://page/" + FACEBOOK_PAGE_ID;
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            return FACEBOOK_URL; //normal web url
-        }
-    }
+//    public String getFacebookPageURL(Context context) {
+//         String FACEBOOK_URL = "https://www.facebook.com/LootZealicon";
+//         String FACEBOOK_PAGE_ID = "LootZealicon";
+//        PackageManager packageManager = context.getPackageManager();
+//        try {
+//            int versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode;
+//            if (versionCode >= 3002850) { //newer versions of fb app
+//                return "fb://facewebmodal/f?href=" + FACEBOOK_URL;
+//            } else { //older versions of fb app
+//                return "fb://page/" + FACEBOOK_PAGE_ID;
+//            }
+//        } catch (PackageManager.NameNotFoundException e) {
+//            return FACEBOOK_URL; //normal web url
+//        }
+//      }
 
 }

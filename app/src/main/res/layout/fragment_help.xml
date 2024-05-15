@@ -3,9 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/primary_bg"
     tools:context="com.hackncs.zealicon.loot.Help">
 
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageFilterView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_image" />
 
     <TextView
         android:id="@+id/textView3"
@@ -14,148 +20,163 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="@font/popbold"
+        android:fontFamily="@font/opensans_bold"
         android:gravity="center"
         android:text="Help"
-        android:textSize="30sp"
-        android:textColor="@color/dot_dark_screen1"
+        android:textSize="32sp"
+        android:textColor="@color/better_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<ScrollView
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_marginStart="24dp"
-    android:layout_marginTop="12dp"
-    android:layout_marginEnd="24dp"
-    android:layout_marginBottom="80dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    android:background="@drawable/white_background70"
-    app:layout_constraintTop_toBottomOf="@+id/textView3"
-    app:layout_constraintVertical_bias="1.0">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        >
-
-        <TextView
-            android:id="@+id/contact"
-            android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/card_background"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="1.0">
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:fontFamily="@font/popinmedium"
-            android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:text="Contact Details:"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            android:paddingHorizontal="48dp"
+            android:paddingVertical="32dp"
+            >
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/contact"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="24dp"
-            android:layout_toEndOf="@+id/anuragContact"
-            android:fontFamily="@font/popinmedium"
-            android:gravity="center"
-            android:text="Anurag Srivastava"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/opensans_bold"
+                android:gravity="center"
+                android:textColor="@color/better_black"
+                android:text="Contact Details:"
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/anuragContact"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_below="@+id/contact"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_phone_black_24dp" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView7"
+                android:layout_alignEnd="@+id/textView7"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="45dp"
+                android:fontFamily="@font/opensans_medium"
+                android:gravity="center"
+                android:text="Anurag Srivastava"
+                android:textAlignment="center"
+                android:textColor="#404040"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
-            android:layout_toEndOf="@+id/alokContact"
-            android:fontFamily="@font/popinmedium"
-            android:gravity="center"
-            android:text="Alok Ranjan"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            <Button
+                android:id="@+id/anuragContact"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_alignTop="@+id/textView2"
+                android:layout_alignBottom="@+id/textView2"
+                android:layout_marginTop="-6dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="-6dp"
+                android:layout_toStartOf="@+id/textView2"
+                android:background="@drawable/ic_phone_black_24dp" />
 
-        <Button
-            android:id="@+id/alokContact"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_below="@+id/textView2"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_phone_black_24dp" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:layout_alignStart="@+id/textView2"
+                android:layout_alignEnd="@+id/textView2"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/opensans_medium"
+                android:text="Alok Ranjan"
+                android:textColor="#404040"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ncs_hallmark"
+                android:fontFamily="@font/opensans_bold"
+                android:textColor="@color/better_black"
+                android:layout_below="@id/alokContact"
+                android:textAlignment="center"
+                android:textSize="18.dp"
+                android:layout_marginTop="48.dp"/>
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView4"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/popinmedium"
-            android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:text="Facebook Page(Forum):"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            <!--        <TextView-->
+            <!--            android:id="@+id/textView5"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_below="@+id/textView4"-->
+            <!--            android:layout_alignParentStart="true"-->
+            <!--            android:layout_marginTop="24dp"-->
+            <!--            android:fontFamily="@font/popinmedium"-->
+            <!--            android:gravity="center"-->
+            <!--            android:textColor="@color/colorPrimary"-->
+            <!--            android:text="Facebook Page(Forum):"-->
+            <!--            android:textAlignment="center"-->
+            <!--            android:textSize="18sp" />-->
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView5"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/popinmedium"
-            android:textColor="@color/colorPrimary"
-            android:text="www.facbook.com/LootZealicon"
-            android:textSize="18sp" />
+            <!--        <TextView-->
+            <!--            android:id="@+id/textView6"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_below="@+id/textView5"-->
+            <!--            android:layout_alignParentStart="true"-->
+            <!--            android:layout_marginTop="8dp"-->
+            <!--            android:fontFamily="@font/popinmedium"-->
+            <!--            android:textColor="@color/colorPrimary"-->
+            <!--            android:text="www.facbook.com/LootZealicon"-->
+            <!--            android:textSize="18sp" />-->
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView6"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/popinmedium"
-            android:text="Visit the page for hints and queries."
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            <Button
+                android:id="@+id/alokContact"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_below="@+id/textView2"
+                android:layout_alignBottom="@+id/textView4"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="-3dp"
+                android:layout_toStartOf="@+id/textView4"
+                android:background="@drawable/ic_phone_black_24dp" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView7"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/popinmedium"
-            android:text="Computer Centre Academic block 1,\nNCS"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-    </RelativeLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/contact"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/popinmedium"
+                android:text="Feel free to reach us at: Computer Center AB-1"
+                android:textAlignment="center"
+                android:textColor="#404040"
+                android:textSize="18sp" />
+
+            <!--        <TextView-->
+            <!--            android:id="@+id/textView8"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_below="@+id/textView7"-->
+            <!--            android:layout_alignParentStart="true"-->
+            <!--            android:layout_alignParentEnd="true"-->
+            <!--            android:layout_centerHorizontal="true"-->
+            <!--            android:layout_marginTop="10dp"-->
+            <!--            android:fontFamily="@font/popinmedium"-->
+            <!--            android:text="Computer Centre Academic block 1,\nNCS"-->
+            <!--            android:textColor="@color/white"-->
+            <!--            android:textSize="18sp" />-->
+        </RelativeLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
